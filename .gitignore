@@ -1,6 +1,16 @@
 
 # dependencies
-/node_modules
+# Ignore all Node dependencies (any depth)
+node_modules/
+
+# Ignore Turborepo local cache (any depth)
+.turbo/
+
+# Optional: common build outputs (uncomment if you don't want them tracked)
+dist/
+build/
+.next/
+out/
 
 # production
 /build
