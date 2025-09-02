@@ -66,6 +66,8 @@ export default {
         HighlightLightGray: "hsl(var(--highlight-light-gray))",
         HightlightLightCream: "hsl(var(--highlight-light-cream))",
         grayLightWhite: "hsl(var(--gray-light-white))",
+        greyForeground: "hsl(var(--grey-foreground))",
+        textChatcolor: "hsl(var(--text-chatcolor))",
         dueRed: "hsl(var(--due-red))",
         highlightRed: "hsl(var(--highlight-red))",
         highlightYellow: "hsl(var(--highlight-yellow))",

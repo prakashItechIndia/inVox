@@ -15,6 +15,7 @@ import { Dashboard } from '../pages/Dashboard';
 import { Profile } from '../pages/MyProfile';
 import { PrivateRoute } from '../pages/PrivateRoute';
 import { Verifier } from '@/pages/Verifier';
+import { PdfPageDemo } from '@/pages/pdfpage';
 
 export const PrivateRoutes = observer(() => {
   // const userType = appState.user?.userType;
@@ -48,9 +49,16 @@ export const PrivateRoutes = observer(() => {
         <Route path={NavigationRoutes.Verifier} element={<Verifier />} />
         <Route path={NavigationRoutes.Indexer} element={<Verifier />} />
         <Route path={NavigationRoutes.Help} element={<Help />} />
+        <Route path={NavigationRoutes.pdfpage} element={<PdfPageDemo />} />
         <Route path={NavigationRoutes.Profile} element={<Profile />} />
-        <Route path={NavigationRoutes.Settings} element={<Settings portalType={userType as InvoxUserType} />} />
-        <Route path={NavigationRoutes.Logs} element={<Logs portalType={userType as InvoxUserType} />} />
+        <Route
+          path={NavigationRoutes.Settings}
+          element={<Settings portalType={userType as InvoxUserType} />}
+        />
+        <Route
+          path={NavigationRoutes.Logs}
+          element={<Logs portalType={userType as InvoxUserType} />}
+        />
       </Route>
       <Route path="*" element={<Navigate to={NavigationRoutes.Home} />} />
     </Routes>

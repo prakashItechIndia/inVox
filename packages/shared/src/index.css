@@ -216,6 +216,12 @@ body,
     --blue-dark: 210, 22%, 15%, 1;
     --btn-color: 245, 57%, 54%, 1;
 
+    /* grey foreground 0, 0%, 38%, 1 */
+    --grey-foreground: 0, 0%, 38%, 1;
+
+    /* text chat color 0, 0%, 26%, 1 */
+    --text-chatcolor: 0, 0%, 26%, 1;
+
     --hr-line-color: 0, 0%, 88%, 1;
     --black-mdeium: 210, 12%, 28%, 1;
     --black-border: 210, 7%, 35%, 1;
