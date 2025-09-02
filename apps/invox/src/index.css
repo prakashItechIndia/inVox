@@ -1,0 +1,10 @@
+/* Override default styles and colors */
+:root {
+}
+
+.dark {
+}
+
+.word-break {
+  word-break: break-word;
+}

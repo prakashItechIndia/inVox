@@ -1,0 +1,482 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+
+  /* Apply thin scrollbar globally */
+  * {
+    @apply scrollbar-thin;
+    @apply scrollbar-thumb-gray-300;
+    @apply scrollbar-track-transparent;
+  }
+}
+
+body,
+#root {
+  @apply h-screen w-full;
+  @apply font-sans !important;
+}
+
+/* PUBLIC SANS FONT-FACE DEFINITIONS */
+
+/* Regular & Italic Styles */
+@font-face {
+  font-family: 'Public Sans';
+  src: url('./assets/css/Public_Sans/static/Inter-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  src: url('./assets/css/Public_Sans/static/Inter-Italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Thin */
+@font-face {
+  font-family: 'Public Sans';
+  src: url('./assets/css/Public_Sans/static/Inter-Thin.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  src: url('./assets/css/Public_Sans/static/Inter-ThinItalic.woff') format('woff');
+  font-weight: 100;
+  font-style: italic;
+}
+
+/* Extra Light */
+@font-face {
+  font-family: 'Public Sans';
+  src: url('./assets/css/Public_Sans/static/Inter-ExtraLight.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  src: url('./assets/css/Public_Sans/static/Inter-ExtraLightItalic.woff') format('woff');
+  font-weight: 200;
+  font-style: italic;
+}
+
+/* Light */
+@font-face {
+  font-family: 'Public Sans';
+  src: url('./assets/css/Public_Sans/static/Inter-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  src: url('./assets/css/Public_Sans/static/Inter-LightItalic.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+}
+
+/* Medium */
+@font-face {
+  font-family: 'Public Sans';
+  src: url('./assets/css/Public_Sans/static/Inter-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  src: url('./assets/css/Public_Sans/static/Inter-MediumItalic.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* SemiBold */
+@font-face {
+  font-family: 'Public Sans';
+  src: url('./assets/css/Public_Sans/static/PublicSans-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  src: url('./assets/css/Public_Sans/static/PublicSans-SemiBoldItalic.woff') format('woff');
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* Bold */
+@font-face {
+  font-family: 'Public Sans';
+  src: url('./assets/css/Public_Sans/static/PublicSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  src: url('./assets/css/Public_Sans/static/PublicSans-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* Extra Bold */
+@font-face {
+  font-family: 'Public Sans';
+  src: url('./assets/css/Public_Sans/static/PublicSans-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  src: url('./assets/css/Public_Sans/static/PublicSans-ExtraBoldItalic.ttf') format('truetype');
+  font-weight: 800;
+  font-style: italic;
+}
+
+/* Black */
+@font-face {
+  font-family: 'Public Sans';
+  src: url('./assets/css/Public_Sans/static/PublicSans-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  src: url('./assets/css/Public_Sans/static/PublicSans-BlackItalic.ttf') format('truetype');
+  font-weight: 900;
+  font-style: italic;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --template-card: 231.4 22.6% 93.9%;
+    /* hex color #ecedf3 */
+    --template-card-foreground: 0 0% 0%;
+    /* hex color #000000 */
+    --template-card-head-fg: 313.7 100% 66.5%;
+    /* hex color #ff54d8 */
+    --template-card-head-bg: 313.7 100% 66.5%;
+    /* hex color #ff54d8 */
+    --template-card-price-fg: 234 11.1% 64.7%;
+    /* hex color #9B9DAF */
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --example: 210 100 10;
+    --example-foreground: 100 10 100;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    /* embla carousel css variables */
+    --text-high-contrast-value: 0 0% 19.2%;
+    --detail-medium-contrast: 0 0% 82.4%;
+    --detail-high-contrast: 0 0% 75.3%;
+    --text-body: 265 10.9% 21.6%;
+    /* hex color #36313d */
+    --text-body-light: 0 0% 100%;
+    /* hex color #ffffff */
+    --text-high-contrast: 0 0% 19.2%;
+
+    --white: 0, 0%, 100%, 1;
+    /* hsla(0, 0%, 100%, 1) */
+    --blue-dark: 210, 22%, 15%, 1;
+    --btn-color: 245, 57%, 54%, 1;
+
+    --hr-line-color: 0, 0%, 88%, 1;
+    --black-mdeium: 210, 12%, 28%, 1;
+    --black-border: 210, 7%, 35%, 1;
+    --gray-medium-color: 0, 0%, 94%, 1;
+    /* hsla(0, 0%, 94%, 1) */
+    --table-header-text-color: 0, 0%, 50%, 1;
+    --divider-color: 0, 0%, 75%, 1;
+    /* hsla(0, 0%, 75%, 1) */
+    --gray-color: 0, 0%, 41%, 1
+      /* hsla(0, 0%, 41%, 1) */
+    ;
+    --gray-light: 212, 7%, 44%, 1
+      /* hsla(212, 7%, 44%, 1) */
+    ;
+    --highlight: 245, 57%, 54%, 1;
+    /* navbar border highlight background: var(--Brand-Stroke-Compound-Rest, hsla(208, 85%, 40%, 1)); */
+    --navbar-border-highlight: 208, 85%, 40%, 1;
+    /* hsla(245, 57%, 54%, 1) */
+    --highlight-light-goldenrod-yellow:
+      38, 65%, 76%, 1
+      /* hsla(38, 65%, 76%, 1) */
+    ;
+    --highlight-light-lime: 102, 65%, 76%, 1
+      /* hsla(102, 65%, 76%, 1) */
+    ;
+    --highlight-minty-sky: 176, 65%, 76%, 1;
+    /* hsla(176, 65%, 76%, 1) */
+    --gray-light-green: 120, 2%, 78%, 1
+      /* hsla(120, 2%, 78%, 1) */
+    ;
+    --black-dark: 0, 0%, 0%, 1;
+    /* hsla(0, 0%, 0%, 1) */
+    --highligh-soft-cream-yellow: 41, 57%, 89%, 1;
+    /* hsla(41, 57%, 89%, 1) */
+    --highlight-soft-wheat-yellow: 42, 35%, 79%, 1;
+    /* hsla(42, 35%, 79%, 1) */
+    --highlight-light-gray: 0, 0%, 95%, 1
+      /* hsla(0, 0%, 95%, 1) */
+    ;
+    --highlight-light-cream: 42, 5%, 87%, 1
+      /* hsla(42, 5%, 87%, 1) */
+    ;
+
+    --gray-light-white: 165, 10%, 69%, 1
+      /* hsla(165, 10%, 69%, 1) */
+    ;
+    /* due red background: hsla(4, 90%, 58%, 1);
+ */
+    --due-red: 4, 90%, 58%, 1;
+    --highlight-red: 360, 59%, 48%, 1
+      /*hsla(360, 59%, 48%, 1) */
+    ;
+    --highlight-yellow: 41, 90%, 56%, 1
+      /*hsla(41, 90%, 56%, 1) */
+    ;
+    --highlight-green: 108, 52%, 47%, 1
+      /*hsla(108, 52%, 47%, 1) */
+    ;
+    --highlight-orange: 41, 96%, 89%, 1;
+    /*hsla(41, 96%, 89%, 1) */
+    --highlight-soft-purple: 247, 43%, 96%, 1
+      /*hsla(247, 43%, 96%, 1) */
+    ;
+    --highlight-pink-red: 0, 48%, 83%, 1
+      /* hsla(0, 48%, 83%, 1) */
+    ;
+    --dark-cement-color: 211, 11%, 43%, 1
+      /* hsla(211, 11%, 43%, 1) */
+    ;
+    --divider-white-color: 0, 0%, 87%, 1
+      /* hsla(0, 0%, 87%, 1) */
+    ;
+    --dark-red: 0, 60%, 41%, 1
+      /* hsla(0, 60%, 41%, 1) */
+    ;
+    --highlight-green-light: 109, 46%, 91%, 1
+      /* hsla(109, 46%, 91%, 1) */
+    ;
+    --highlight-light-yellow: 42, 100%, 95%, 1
+      /* hsla(42, 100%, 95%, 1) */
+    ;
+    --text-gray-color: 210, 4%, 32%, 1
+      /* hsla(210, 4%, 32%, 1) */
+    ;
+    --red-light: 0, 74%, 93%, 1
+      /* hsla(0, 74%, 93%, 1) */
+    ;
+    --red-light-border: 0, 35%, 72%, 1
+      /* hsla(0, 35%, 72%, 1) */
+    ;
+    --background-yellow-light: 41, 100%, 87%, 1
+      /* hsla(41, 100%, 87%, 1) */
+    ;
+    --border-yellow-medium: 41, 84%, 75%, 1
+      /* hsla(41, 84%, 75%, 1) */
+    ;
+    --background-light-lime-green:
+      108, 64%, 88%, 1
+      /* hsla(108, 64%, 88%, 1) */
+    ;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --template-card: 231.4 22.6% 93.9%;
+    /* hex color #ecedf3 */
+    --template-card-foreground: 0 0% 0%;
+    /* hex color #000000 */
+    --template-card-head-fg: 313.7 100% 66.5%;
+    /* hex color #ff54d8 */
+    --template-card-head-bg: 313.7 100% 66.5%;
+    /* hex color #ff54d8 */
+    --template-card-price-fg: 234 11.1% 64.7%;
+    /* hex color #9B9DAF */
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+
+    /* embla carousel css variables */
+    --text-high-contrast-value: 0 0% 19.2%;
+    --detail-medium-contrast: 0 0% 82.4%;
+    --detail-high-contrast: 0 0% 75.3%;
+    --text-body: 265 10.9% 21.6%;
+    /* hex color #36313d */
+    --text-body-light: 0 0% 100%;
+    /* hex color #ffffff */
+    --text-high-contrast: 0 0% 19.2%;
+
+    --white: 0, 0%, 100%, 1;
+    /* hsla(0, 0%, 100%, 1) */
+    --blue-dark: 210, 22%, 15%, 1;
+    --btn-color: 245, 57%, 54%, 1;
+    --hr-line-color: 0, 0%, 88%, 1;
+    --black-mdeium: 210, 12%, 28%, 1;
+    --black-border: 210, 7%, 35%, 1;
+    --gray-medium-color: 0, 0%, 94%, 1;
+    /* hsla(0, 0%, 94%, 1) */
+    --table-header-text-color: 0, 0%, 50%, 1;
+    --divider-color: 0, 0%, 100%, 1;
+    /* hsla(0, 0%, 100%, 1) */
+    --gray-color: 0, 0%, 41%, 1
+      /* hsla(0, 0%, 41%, 1) */
+    ;
+    --gray-light: 212, 7%, 44%, 1
+      /* hsla(212, 7%, 44%, 1) */
+    ;
+    --highlight: 245, 57%, 54%, 1;
+    /* hsla(245, 57%, 54%, 1) */
+    --highlight-light-goldenrod-yellow:
+      38, 65%, 76%, 1
+      /* hsla(38, 65%, 76%, 1) */
+    ;
+    --highlight-light-lime: 102, 65%, 76%, 1
+      /* hsla(102, 65%, 76%, 1) */
+    ;
+    --highlight-minty-sky: 176, 65%, 76%, 1;
+    /* hsla(176, 65%, 76%, 1) */
+    --gray-light-green: 120, 2%, 78%, 1
+      /* hsla(120, 2%, 78%, 1) */
+    ;
+    --black-dark: 0, 0%, 0%, 1;
+    /* hsla(0, 0%, 0%, 1) */
+    --highligh-soft-cream-yellow: 41, 57%, 89%, 1;
+    /* hsla(41, 57%, 89%, 1) */
+    --highlight-soft-wheat-yellow: 42, 35%, 79%, 1;
+    /* hsla(42, 35%, 79%, 1) */
+    --highlight-light-gray: 0, 0%, 95%, 1
+      /* hsla(0, 0%, 95%, 1) */
+    ;
+    --highlight-light-cream: 42, 5%, 87%, 1
+      /* hsla(42, 5%, 87%, 1) */
+    ;
+
+    --gray-light-white: 165, 10%, 69%, 1
+      /* hsla(165, 10%, 69%, 1) */
+    ;
+    --highlight-red: 360, 59%, 48%, 1
+      /*hsla(360, 59%, 48%, 1) */
+    ;
+    --highlight-yellow: 41, 90%, 56%, 1
+      /*hsla(41, 90%, 56%, 1) */
+    ;
+    --highlight-green: 108, 52%, 47%, 1
+      /*hsla(108, 52%, 47%, 1) */
+    ;
+    --highlight-orange: 41, 96%, 89%, 1;
+    /*hsla(41, 96%, 89%, 1) */
+    --highlight-soft-purple: 247, 43%, 96%, 1
+      /*hsla(247, 43%, 96%, 1) */
+    ;
+    --highlight-pink-red: 0, 48%, 83%, 1
+      /* hsla(0, 48%, 83%, 1) */
+    ;
+    --dark-cement-color: 211, 11%, 43%, 1
+      /* hsla(211, 11%, 43%, 1) */
+    ;
+    --divider-white-color: 0, 0%, 87%, 1
+      /* hsla(0, 0%, 87%, 1) */
+    ;
+    --dark-red: 0, 60%, 41%, 1
+      /* hsla(0, 60%, 41%, 1) */
+    ;
+    --highlight-green-light: 109, 46%, 91%, 1
+      /* hsla(109, 46%, 91%, 1) */
+    ;
+    --highlight-light-yellow: 42, 100%, 95%, 1
+      /* hsla(42, 100%, 95%, 1) */
+    ;
+    --text-gray-color: 210, 4%, 32%, 1
+      /* hsla(210, 4%, 32%, 1) */
+    ;
+    --red-light: 0, 74%, 93%, 1
+      /* hsla(0, 74%, 93%, 1) */
+    ;
+    --red-light-border: 0, 35%, 72%, 1
+      /* hsla(0, 35%, 72%, 1) */
+    ;
+    --background-yellow-light: 41, 100%, 87%, 1
+      /* hsla(41, 100%, 87%, 1) */
+    ;
+    --border-yellow-medium: 41, 84%, 75%, 1
+      /* hsla(41, 84%, 75%, 1) */
+    ;
+    --background-light-lime-green:
+      108, 64%, 88%, 1
+      /* hsla(108, 64%, 88%, 1) */
+    ;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    @apply transition-colors duration-500;
+  }
+}
