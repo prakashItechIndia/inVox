@@ -15,7 +15,6 @@ export enum InvoxUserType {
   indexer = 'indexer',
   verifier = 'verifier',
   clarifier = 'clarifier',
-  organisationUser = 'organisationUser'
 }
 export type InvoxRoles = `${InvoxUserType}`;
 
@@ -26,7 +25,6 @@ export const RoleTypeName: Record<RoleType, string> = {
   [InvoxUserType.indexer]: 'Indexer',
   [InvoxUserType.verifier]: 'Verifier',
   [InvoxUserType.clarifier]: 'Clarifier',
-  [InvoxUserType.organisationUser]: 'User'
 };
 
 export const CurrentUserRole: InvoxUserType | undefined = localStorage.getItem('currentRole') as InvoxUserType | undefined;

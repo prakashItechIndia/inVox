@@ -49,8 +49,6 @@ export const Login = observer(function() {
     localStorage.setItem('users', 'loggedIn');
     if (data?.userName?.includes('admin')) {
       localStorage.setItem('currentRole', InvoxUserType.organisationAdmin);
-    } else if (data?.userName?.includes('user')) {
-      localStorage.setItem('currentRole', InvoxUserType.organisationUser);
     } else if (data?.userName?.includes('clarifier')) {
       localStorage.setItem('currentRole', InvoxUserType.clarifier);
     } else if (data?.userName?.includes('indexer')) {

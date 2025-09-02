@@ -42,7 +42,7 @@ export const PrivateRoutes = observer(() => {
   return (
     <Routes>
       <Route path={NavigationRoutes.Home} element={<PrivateRoute />}>
-        <Route path={NavigationRoutes.Dashboard} element={<Dashboard />} />
+        <Route path={NavigationRoutes.Dashboard} element={<Dashboard portalType={userType as InvoxUserType} />} />
         <Route path={NavigationRoutes.Invoices} element={<Invoices />} />
         <Route path={NavigationRoutes.Clarifier} element={<Clarifier />} />
         <Route path={NavigationRoutes.Verifier} element={<Verifier />} />
