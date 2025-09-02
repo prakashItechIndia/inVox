@@ -4,7 +4,7 @@ import { Header } from "@/components/header";
 import { CompactPaginationToolbar } from "@/components/pagination";
 import PaginationWrapper from "@/components/pagination-wrapper";
 import { useGetInvoice } from "@/hooks/rq/queries/useGetInvoice";
-import { Tabs, TabsList, TabsTrigger } from "@shared/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger, tabsTriggerClassName } from "@shared/components/ui/tabs";
 import { useLanguageTranslation } from "@shared/hooks/ui/useLanguageTranslation";
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
@@ -68,7 +68,7 @@ export const Invoices = observer(function Invoices() {
         className={cn("bg-white")}
       // isSearchInputHide
       />
-      <div className="flex items-center justify-between py-4 bg-[#FAFAFA] !h-16">
+      <div className="flex items-center justify-between py-0 bg-[#FAFAFA]">
         <Tabs
           orientation={"horizontal"}
           value={currentTab}
@@ -82,9 +82,7 @@ export const Invoices = observer(function Invoices() {
                 onClick={() => {
                   setCurrentTab(e?.key);
                 }}
-                className={
-                  "flex items-center !bg-[#FAFAFA] font-normal py-[0.75rem] px-[0.625rem] text-[0.8125rem] rounded-none"
-                }
+                className={tabsTriggerClassName}
               >
                 {e.name}
               </TabsTrigger>

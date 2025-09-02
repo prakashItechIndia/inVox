@@ -2,42 +2,36 @@ import DataCard from "@/components/data-card";
 import { SectionHeaderWithDescription } from "@/components/title-with-des";
 import { ReactArrowUpIcon, ReactCutIcon, ReactDoccTextIcon, ReactHourLoadingIcon, ReactRadarIcon } from "@shared/components/icons/dashboard";
 import { InvoxUserType } from "@shared/lib/utils";
-import { LucideIceCreamCone } from "lucide-react";
 import { Verifier } from "../Verifier";
-
-  // const dashboardStash = [
-  //   {
-  //     title: 'Organisations Using iNvox',
-  //     value: '100',
-  //     icon: <LucideIceCreamCone />
-  //   },
-  //   {
-  //     title: 'Organisation’s Subscription About to End',
-  //     value: '23',
-  //     icon: <LucideIceCreamCone />,
-  //     amountDescription: 'Organisation’s'
-  //   },
-  //   {
-  //     title: 'Premium Users',
-  //     value: '58',
-  //     icon: <LucideIceCreamCone />
-  //   },
-  //   {
-  //     title: 'Avg. AI Processing speed',
-  //     value: '3.5 Mins',
-  //     icon: <LucideIceCreamCone />
-  //   }
-  // ]
-
-
-
-  interface Props {
+interface Props {
   portalType: InvoxUserType;
 }
-export const Dashboard = ( props:Props) => {
+export const Dashboard = (props: Props) => {
   const { portalType } = props;
 
-const getWidgetData = () => {
+  const getWidgetData = () => {
+    return [
+      {
+        title: 'Files Pending Verification',
+        value: '100',
+        icon: <ReactDoccTextIcon />
+      },
+      {
+        title: 'Files Reaching Due Date',
+        value: '23',
+        icon: <ReactRadarIcon />
+      },
+      {
+        title: 'Files in Priority list',
+        value: '58',
+        icon: <ReactArrowUpIcon />
+      },
+      {
+        title: 'Your Verification Speed Per file',
+        value: '3.5 Mins',
+        icon: <ReactHourLoadingIcon />
+      }
+    ]
     switch (portalType) {
       case InvoxUserType.verifier:
         return [
@@ -49,18 +43,17 @@ const getWidgetData = () => {
           {
             title: 'Files Reaching Due Date',
             value: '23',
-            icon: <LucideIceCreamCone />,
-            amountDescription: 'Organisation’s'
+            icon: <ReactRadarIcon />,
           },
           {
             title: 'Files in Priority list',
             value: '58',
-            icon: <LucideIceCreamCone />
+            icon: <ReactArrowUpIcon />
           },
           {
             title: 'Your Verification Speed Per file',
             value: '3.5 Mins',
-            icon: <LucideIceCreamCone />
+            icon: <ReactHourLoadingIcon />
           }
         ]
       case InvoxUserType.indexer:
@@ -86,10 +79,10 @@ const getWidgetData = () => {
             icon: <ReactHourLoadingIcon />
           }
         ]
-        default:
-          return []
+      default:
+        return []
     }
-}
+  }
 
   return (
     <div className="bg-white min-h-screen space-y-6">
@@ -102,7 +95,7 @@ const getWidgetData = () => {
       {/* Header Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 border-b border-gray-200 !m-0">
         {getWidgetData()?.map((item, index) => (
-          <DataCard amountDescription={item.amountDescription} isbordered={getWidgetData()?.length - 1 !== index} key={index} label='' description={item.title} amount={item.value} icon={item.icon} />
+          <DataCard isLoading={false} isbordered={getWidgetData()?.length - 1 !== index} key={index} label='' description={item.title} amount={item.value} icon={item.icon} />
         ))}
       </div>
       <Verifier isHiddenHeader={true} />

@@ -3,7 +3,7 @@
 import { Header } from '@/components/header';
 import { useGetUsersList } from '@/hooks/rq/queries/useGetUsers';
 import { ReactManageUserIcon } from '@shared/components/icons/settings';
-import { Tabs, TabsList, TabsTrigger } from '@shared/components/ui/tabs';
+import { Tabs, TabsList, TabsTrigger, tabsTriggerClassName } from '@shared/components/ui/tabs';
 import { useLanguageTranslation } from '@shared/hooks/ui/useLanguageTranslation';
 import { observer } from 'mobx-react-lite';
 import React, { useState } from 'react';
@@ -64,7 +64,7 @@ export const ManageUsers = observer(function(props: Props) {
         hiddenSearch={true}
       />
 
-      <div className="flex items-center justify-between py-4 bg-[#FAFAFA] !h-16">
+      <div className="flex items-center justify-between py-0 bg-[#FAFAFA]">
         <Tabs orientation={'horizontal'} value={currentTab} className="p-0 pl-4 !border-none">
           <TabsList className="w-full justify-start	overflow-x-auto !border-none">
             {NavList.map((e, index) => (
@@ -74,7 +74,7 @@ export const ManageUsers = observer(function(props: Props) {
                 onClick={() => {
                   setCurrentTab(e?.key);
                 }}
-                className={"flex items-center !bg-[#FAFAFA] font-normal gap-2 p-2 text-md !h-16"}
+                className={tabsTriggerClassName}
               >
                 {e.icon &&
                   e.icon(currentTab === e.key ? 'text-blue-600' : 'text-gray-400')}

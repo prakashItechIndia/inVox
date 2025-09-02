@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { ProfileGrid, ProfileCardData } from './tableGrid';
+import { ProfileGrid } from './tableGrid';
 
 // Sample data matching the image description
-const sampleProfiles: ProfileCardData[] = [
+const sampleProfiles: any = [
   {
     id: '1',
     name: 'Wilson Workman',
@@ -79,7 +79,7 @@ export const ProfileGridExample: React.FC = () => {
   const [selectedProfile, setSelectedProfile] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleProfileClick = (profile: ProfileCardData) => {
+  const handleProfileClick = (profile: any) => {
     setSelectedProfile(profile.id);
     console.log('Selected profile:', profile);
   };

@@ -19,6 +19,7 @@ export interface NavButtonLink {
   variant: 'default' | 'ghost';
   href: string;
   visible: boolean;
+  iconClassName?: string;
 }
 interface OnClickProps {
   onLinkClicked?: (link: NavButtonLink) => void;
@@ -27,12 +28,13 @@ interface OnClickProps {
 export interface NavButtonLinkProps extends OnClickProps {
   isCollapsed: boolean;
   links: NavButtonLink[];
+  iconClassName?: string;
 }
 interface NavProps extends NavButtonLinkProps {
   subLinks?: NavButtonLink[];
   userType?: InvoxUserType;
   userInfo: GetUserResponse | null;
-  footer: any
+  footer: any;
 }
 
 export const NavLinksList = ({
@@ -41,7 +43,7 @@ export const NavLinksList = ({
 }: NavButtonLinkProps) => {
   const location = useLocation();
   const pathName = location.pathname;
-  return links.map((link) =>
+  return links?.map((link) =>
     <Link
       key={link.href}
       to={link.href}
@@ -57,10 +59,10 @@ export const NavLinksList = ({
       )}>
       <div className='m-auto text-center'>
         <link.icon
-          className={cn("h-5 w-5 m-auto",)}
+          className={cn("h-5 w-5 m-auto",link?.iconClassName)}
           variant={pathName.includes(link?.href) ? 'on' : 'off'}
         />
-        <div className='text-[10px] text-white'>{link?.title}</div>
+        <div className='text-[0.7rem] text-white'>{link?.title}</div>
       </div>
     </Link>
   );
@@ -70,7 +72,7 @@ export const Nav = observer(
     links,
     isCollapsed,
     onLinkClicked,
-    footer
+    footer,
   }: NavProps) => {
     return (
       <TooltipProvider>

@@ -100,7 +100,7 @@ export const CustomTable = observer((props: Props) => {
                   key={header.id}
                   className={cn(
                     'text-[#000]',
-                    'h-auto pb-2 pt-4 !py-4 cursor-pointer select-none',
+                    'h-auto !py-3 cursor-pointer select-none',
                     header.id === 'stickyAction' &&
                     'bg-grayMediumColor sticky right-0',
                   )}
@@ -157,7 +157,7 @@ export const CustomTable = observer((props: Props) => {
                       key={cell.id}
                       className={cn(
                         key === 'stickyAction' &&
-                        'border-dividerColor sticky right-0 border-b-2 bg-white !py-4',
+                        'border-dividerColor sticky right-0 border-b-2 bg-white !py-3',
                         tableDataClassName,
                       )}>
                       {cellValue}

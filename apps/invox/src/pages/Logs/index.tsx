@@ -4,7 +4,7 @@ import { Header } from '@/components/header';
 import { NoDataFound } from '@/components/noData';
 import { CompactPaginationToolbar } from '@/components/pagination';
 import { useGetLogsList } from '@/hooks/rq/queries/useGetLogs';
-import { Tabs, TabsList, TabsTrigger } from '@shared/components/ui/tabs';
+import { Tabs, TabsList, TabsTrigger, tabsTriggerClassName } from '@shared/components/ui/tabs';
 import { useLanguageTranslation } from '@shared/hooks/ui/useLanguageTranslation';
 import { observer } from 'mobx-react-lite';
 import { useState } from 'react';
@@ -67,7 +67,7 @@ export const Logs = observer(function(props: Props) {
         hiddenAddButton={true}
       />
 
-      <div className="flex items-center justify-between py-4 bg-[#FAFAFA] !h-16">
+      <div className="flex items-center justify-between py-0 bg-[#FAFAFA]">
         <Tabs
           orientation={"horizontal"}
           value={currentTab}
@@ -81,9 +81,7 @@ export const Logs = observer(function(props: Props) {
                 onClick={() => {
                   setCurrentTab(e?.key);
                 }}
-                className={
-                  "flex items-center !bg-[#FAFAFA] font-normal py-[0.75rem] px-[0.625rem] text-[0.8125rem] rounded-none"
-                }
+                className={tabsTriggerClassName}
               >
                 {e.name}
               </TabsTrigger>

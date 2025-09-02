@@ -1,9 +1,9 @@
 'use client';
 
 import { Button } from '@shared/components/ui/button';
-import { Input } from '@shared/components/ui/input';
-import { cn } from 'shared';
+import { SearchFilter } from '@shared/components/ui/searchFilter';
 import { useMemo } from 'react';
+import { cn } from 'shared';
 import { CustomSelect } from './custom-select';
 
 interface CompactPaginationToolbarProps {
@@ -39,16 +39,16 @@ export function CompactPaginationToolbar({
     if (currentPage < pageCount) onPageChange(currentPage + 1);
   };
 
-  const buttonBaseClasses = 'bg-white !border-1 !border-[#E0E0E0] rounded-md p-2 text-[1.6rem]';
+  const buttonBaseClasses = 'bg-white !border-1 !border-[#E0E0E0] rounded-lg p-2 text-[1.6rem]';
 
   return (
     <div className="flex items-center justify-between px-4">
       {/* Search Input */}
       <div className="flex items-center w-full max-w-sm">
-        <Input
-          placeholder="Search"
-          onChange={e => onSearchChange(e.target.value)}
-          className="w-full"
+        <SearchFilter
+          searchPlaceHolder="Search"
+          onChange={e => onSearchChange(e)}
+          className="w-full border-none"
         />
       </div>
 
@@ -71,7 +71,7 @@ export function CompactPaginationToolbar({
         <CustomSelect
           onValueChange={e => onPageSizeChange(Number(e))}
           value={`${itemsPerPage}`}
-          className="w-16 rounded border px-2"
+          className="w-16 rounded-lg border px-2"
           options={pageSizeOptions}
         />
       </div>
