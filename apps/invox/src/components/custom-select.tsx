@@ -62,7 +62,7 @@ export function CustomSelect(props: Props) {
       }}
       value={value}>
       <div className="relative">
-        <SelectTrigger className={cn('p-2 ', className)}>
+        <SelectTrigger className={cn('p-2 text-md', className)}>
           <SelectValue placeholder={placeHolder} />
         </SelectTrigger>
         {isClearable && value ? (

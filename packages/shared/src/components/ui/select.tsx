@@ -5,6 +5,7 @@ import { cn } from '../../lib';
 import { ReactDownLogo } from '../icons/action';
 import { Input } from './input';
 import { Skeleton } from './skeleton';
+import { ArrowDownIcon } from '../icons/invoice';
 
 const Select = SelectPrimitive.Root;
 
@@ -25,7 +26,7 @@ const SelectTrigger = React.forwardRef<
     {...props}>
     {children}
     <SelectPrimitive.Icon asChild>
-      <ReactDownLogo className="ml-3 h-3 w-2" variant={'on'} />
+      <ArrowDownIcon className="ml-3 h-4 w-4" variant={'on'} />
     </SelectPrimitive.Icon>
   </SelectPrimitive.Trigger>
 ));

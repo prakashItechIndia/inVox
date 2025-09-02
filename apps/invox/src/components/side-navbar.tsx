@@ -56,6 +56,7 @@ const NavMenu = observer(
           title: t('NAVBAR.INVOICES'),
           href: NavigationRoutes.Invoices,
           icon: ReactInvoicesMenuIcon,
+          iconClassName:'w-6 h-6',
           variant: 'ghost',
           visible: true,
         },
@@ -124,43 +125,11 @@ const NavMenu = observer(
       ]
     };
 
-    // const roleMenuMap: NavButtonLink[] = [
-    //   {
-    //     title: t('NAVBAR.DASHBOARD'),
-    //     href: NavigationRoutes.Dashboard,
-    //     icon: ReactDashboardMenuIcon,
-    //     variant: 'ghost',
-    //     visible: true,
-    //   },
-    //   {
-    //     title: t('NAVBAR.INVOICES'),
-    //     href: NavigationRoutes.Invoices,
-    //     icon: ReactInvoicesMenuIcon,
-    //     variant: 'ghost',
-    //     visible: true,
-    //   },
-    //   {
-    //     title: t('NAVBAR.CLARIFY'),
-    //     href: NavigationRoutes.Clarifier,
-    //     icon: ReactClarifyMenuIcon,
-    //     variant: 'ghost',
-    //     visible: true,
-    //   },
-    //   {
-    //     title: t('NAVBAR.LOGS'),
-    //     href: NavigationRoutes.Logs,
-    //     icon: ReactLogsMenuIcon,
-    //     variant: 'ghost',
-    //     visible: true,
-    //   }
-    // ]
-
     return (
       <Nav
         isCollapsed={lockToCollapse ? true : false}
         onLinkClicked={onLinkClicked}
         links={userType ? roleMenuMap[userType] || [] : []}
-        // links={userType ? roleMenuMap || [] : []}
         userInfo={appState?.userInfo}
         userType={userType}
         footer={

@@ -72,7 +72,7 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({
       </div>
 
       {/* Name */}
-      <h3 className="text-lg text-gray-900 text-center mb-2 line-clamp-1">
+      <h3 className="text-md text-gray-900 text-center mb-2 line-clamp-1">
         {fullName}
       </h3>
 
