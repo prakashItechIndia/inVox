@@ -13,10 +13,11 @@ import { cn } from "shared";
 import { Columns } from "./column";
 
 interface Props {
+  portalType?: string;
   isHiddenHeader?: boolean;
 }
 
-export const Verifier = observer(function Verifier(props: Props) {
+export const Indexer = observer(function Indexer(props: Props) {
   const { isHiddenHeader = false } = props;
   const currentPath = window.location.pathname;
   const navigate = useNavigate();
@@ -116,8 +117,8 @@ export const Verifier = observer(function Verifier(props: Props) {
           data={data?.length ? data : []}
           isLoading={isLoading}
           tableClassName={cn("rounded-t-none")}
-          selectedRow={(src) => {
-            navigate(`${NavigationRoutes.Invoices.replace(":id", src.id)}`);
+          selectedRow={() => {
+            navigate(`${NavigationRoutes.Indexing}`);
           }}
         />
         <PaginationWrapper
