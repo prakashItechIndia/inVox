@@ -1,6 +1,18 @@
 # Node modules
 node_modules/
 
+# dependencies
+# Ignore all Node dependencies (any depth)
+node_modules/
+
+# Ignore Turborepo local cache (any depth)
+.turbo/
+
+# Optional: common build outputs (uncomment if you don't want them tracked)
+dist/
+build/
+.next/
+out/
 # Logs
 logs/
 *.log
@@ -47,5 +59,4 @@ out/
 *.tsbuildinfo
 
 # Testing
-jest/
-test-output/
+package-lock.json

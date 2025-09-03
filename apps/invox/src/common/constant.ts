@@ -15,6 +15,7 @@ export const NavigationRoutes = {
   Indexer: "/indexer",
   Verifier: "/verifier",
   Indexing: "/indexing",
+  pdfpage: "/pdfpage"
 } as const;
 
 export const CacheKey = {

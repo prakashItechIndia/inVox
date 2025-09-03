@@ -209,7 +209,7 @@ const PDFViewer: React.FC<PdfProps> = ({
         </div>
 
         {/* Main viewer */}
-        <div className="flex-1 overflow-hidden bg-[#e6e6e8]">
+        <div className="flex-1 overflow-hidden bg-[#525659] px-4">
           <Worker
             workerUrl={`https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js`}
           >

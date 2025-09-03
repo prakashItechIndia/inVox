@@ -119,8 +119,8 @@ export const Verifier = observer(function Verifier(props: Props) {
           data={data?.length ? data : []}
           isLoading={isLoading}
           tableClassName={cn("rounded-t-none")}
-          selectedRow={(src) => {
-            navigate(`${NavigationRoutes.Invoices.replace(":id", src.id)}`);
+          selectedRow={() => {
+            navigate(`${NavigationRoutes.Indexing}`);
           }}
         />
         <PaginationWrapper
