@@ -4,7 +4,12 @@ import { Header } from "@/components/header";
 import { CompactPaginationToolbar } from "@/components/pagination";
 import PaginationWrapper from "@/components/pagination-wrapper";
 import { useGetInvoice } from "@/hooks/rq/queries/useGetInvoice";
-import { Tabs, TabsList, TabsTrigger } from "@shared/components/ui/tabs";
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  tabsTriggerClassName,
+} from "@shared/components/ui/tabs";
 import { useLanguageTranslation } from "@shared/hooks/ui/useLanguageTranslation";
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
@@ -88,9 +93,7 @@ export const Verifier = observer(function Verifier(props: Props) {
                 onClick={() => {
                   setCurrentTab(e?.key);
                 }}
-                className={
-                  "flex items-center !bg-[#FAFAFA] font-normal py-[0.75rem] px-[0.625rem] text-[0.8125rem] rounded-none"
-                }
+                className={tabsTriggerClassName}
               >
                 {e.name}
               </TabsTrigger>

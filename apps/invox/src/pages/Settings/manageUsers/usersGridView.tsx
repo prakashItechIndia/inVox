@@ -23,7 +23,7 @@ export const UsersGridView = observer(function(props: Props) {
         className={cn(
           'flex h-full w-full flex-col p-6',
         )}>
-        <ProfileGrid onCardClick={handleOpenAndClose} data={data?.length ? data : []} isLoading={isLoading} columns={2} />
+        <ProfileGrid  onCardClick={handleOpenAndClose} data={data?.length ? data : []} isLoading={isLoading} columns={2} />
       </div>
     </div>
   );

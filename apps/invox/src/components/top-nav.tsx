@@ -23,7 +23,7 @@ export default function TopNavbar() {
           loaded={true}
         />
         <PageTitle title={'Sun Shine Private Limited'} />
-        <Button variant="default" className=" bg-[#5347CD] h-8 px-2" onClick={() => { }}>
+        <Button variant="default" className=" bg-[#5347CD] h-8 px-2 rounded-[0.6rem]" onClick={() => { }}>
           <ReactPremiumIcon className="h-6 w-6 mr-2" />
           Upgrade
         </Button>

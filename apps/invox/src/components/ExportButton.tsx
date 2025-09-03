@@ -1,6 +1,8 @@
 import { styles } from '@/styles/style';
+import { ArrowDownIcon, ArrowUpIcon } from '@shared/components/icons/invoice';
 import { ReactExportIcon } from '@shared/components/icons/user';
 import { Button, buttonVariants } from '@shared/components/ui/button';
+import { Popover, PopoverContent, PopoverTrigger } from '@shared/components/ui/popover';
 import { useLanguageTranslation } from '@shared/hooks/ui/useLanguageTranslation';
 import { VariantProps } from 'class-variance-authority';
 import React from 'react';
@@ -13,24 +15,34 @@ export interface ButtonProps
 }
 export const ExportButton = (props: ButtonProps) => {
   const { t } = useLanguageTranslation();
-  const [isExportOpen, setIsExportOpen] = React.useState<boolean>(false);
+  const closeRef = React.useRef<HTMLButtonElement>(null);
+  const [open, setOpen] = React.useState(false);
 
   const exportLoansReports = () => {
-    setIsExportOpen(true);
+    closeRef.current?.click();
   }
   return (
-    <>
-      <Button
-        className={styles.filterButton}
-        type="button"
-        {...props}
-        {...(!props.onClick && props?.enableExportClick
-          ? { onClick: exportLoansReports }
-          : {})}
-      >
-        <ReactExportIcon className="text-highlight" />
-        {t('COMMON.EXPORT')}
-      </Button>
-    </>
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild ref={closeRef}>
+        <Button
+          className={styles.filterButton}
+          type="button"
+          {...props}
+          {...(!props.onClick && props?.enableExportClick
+            ? { onClick: exportLoansReports }
+            : {})}
+        >
+          <ReactExportIcon className="text-highlight" />
+          {t('COMMON.EXPORT')}
+          {open ? <ArrowUpIcon /> : <ArrowDownIcon />}
+
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-full" align="start">
+        <div className="flex flex-col w-full">
+          CSV
+        </div>
+      </PopoverContent>
+    </Popover>
   );
 };

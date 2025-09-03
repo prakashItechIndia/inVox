@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite';
 import { cn, GetUserResponse } from 'shared';
 import { EmptyState } from './EmptyState';
 import { ProfileCard } from './profile-card';
-import { ProfileCardSkeleton } from './ProfileCardSkeleton';
+import { ProfileCardSkeleton } from './Skeletons';
 
 interface ExtendedUserResponse extends GetUserResponse {
   role?: {
@@ -16,7 +16,7 @@ export interface ProfileGridProps {
   columns?: number;
   className?: string;
   onCardClick?: (profile: ExtendedUserResponse) => void;
-  selectedCardId?: string;
+  selectedCardId?: string|null;
   emptyStateMessage?: string;
 }
 

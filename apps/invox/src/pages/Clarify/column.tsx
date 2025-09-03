@@ -73,18 +73,17 @@ export const Columns = (): ColumnDef<GetInvoiceResponse>[] => [
         tempDate && String(tempDate).toLowerCase().includes("hours");
       return (
         <div
-          className={`flex text-md ${exists ? "bg-dueRed  gap-[0.3125rem] rounded " : ""}`}
+          className={`flex text-md ${exists ? "bg-dueRed  gap-[0.3125rem] rounded max-w-fit" : ""}`}
         >
           <div
-            className={`${exists ? "text-white leading-4 py-[0.25rem]" : "text-blueDark"}  flex items-center text-md`}
-          // title={!exists && tempDate ? tempDate : null}
+            className={`${exists ? "text-white leading-4 py-[0.25rem] p-2" : "text-blueDark"}  flex items-center text-md`}
           >
             {!exists && tempDate
               ? truncateString(tempDate, 15)
               : tempDate || "-"}
           </div>
           {exists && (
-            <div className="flex justify-center items-center transform translate-y-px">
+            <div className="flex justify-center items-center transform translate-y-px mr-2">
               <ReactInvoiceDueIcon />
             </div>
           )}

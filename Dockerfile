@@ -20,5 +20,4 @@ WORKDIR /app
 
 COPY --from=base /app /app/
 
-EXPOSE 3021
-EXPOSE 3022
+EXPOSE 3000

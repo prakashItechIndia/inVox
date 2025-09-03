@@ -5,7 +5,7 @@ import { PleaseWaitLoadText } from '@/components/please-wait-load-text';
 import { SectionHeaderWithDescription } from '@/components/title-with-des';
 import { useGetUsersList } from '@/hooks/rq/queries/useGetUsers';
 import { Button } from '@shared/components/ui/button';
-import { Tabs, TabsList, TabsTrigger } from '@shared/components/ui/tabs';
+import { Tabs, TabsList, TabsTrigger, tabsTriggerClassName } from '@shared/components/ui/tabs';
 import { useLanguageTranslation } from '@shared/hooks/ui/useLanguageTranslation';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
@@ -106,7 +106,7 @@ export const Configurations = observer(function(props: Props) {
                 key={`tab_${index}`}
                 value={tab.key}
                 onClick={() => setCurrentTab(tab.key)}
-                className="!rounded-none text-md font-normal !bg-[#FAFAFA] px-3 py-2 rounded hover:text-blue-600 data-[state=active]:text-blue-600 !h-[4.04rem]"
+                className={tabsTriggerClassName}
               >
                 {tab.name}
               </TabsTrigger>

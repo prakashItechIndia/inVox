@@ -56,6 +56,7 @@ const NavMenu = observer(
           title: t('NAVBAR.INVOICES'),
           href: NavigationRoutes.Invoices,
           icon: ReactInvoicesMenuIcon,
+          iconClassName:'w-6 h-6',
           variant: 'ghost',
           visible: true,
         },

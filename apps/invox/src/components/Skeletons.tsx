@@ -12,3 +12,19 @@ export const ProfileCardSkeleton: React.FC = () => (
     <Skeleton className="h-4 w-16 mx-auto" />
   </div>
 );
+
+export const DashboardCardSkeleton: React.FC = () => (
+    <div className="flex items-center m-4 p-4">
+      <div className="flex items-center justify-center w-14 h-14 rounded-full border-2 border-gray-200 mr-4 bg-white">
+        <Skeleton className="w-6 h-6 rounded-full" />
+      </div>
+      <div>
+        <div className="mb-2">
+          <Skeleton className="h-10 w-32 rounded" />
+        </div>
+        <div className="mb-1">
+          <Skeleton className="h-4 w-24 rounded" />
+        </div>
+    </div>
+  </div>
+);

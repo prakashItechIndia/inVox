@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import { cn } from '../../lib';
 
+export const tabsTriggerClassName = "flex items-center !bg-[#FAFAFA] font-normal py-[0.75rem] px-[0.625rem] text-md rounded-none";
 const Tabs = TabsPrimitive.Root;
 
 const TabsList = React.forwardRef<

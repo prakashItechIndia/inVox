@@ -15,7 +15,7 @@ export default defineConfig(async ({ mode }) => {
     assetsInclude: ['**/*.hdr', '**/*.exr', '**/*.glb'],
     server: {
       host: process.env.HOST,
-      port: parseInt(process.env.VITE__INVOX_PORTAL_DEV_PORT) || 3022,
+      port: parseInt(process.env.VITE__INVOX__PORTAL_DEV_PORT) || 3000,
     },
     plugins: [
       // tsconfigPaths(),

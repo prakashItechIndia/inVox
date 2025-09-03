@@ -4,7 +4,7 @@ import PaginationWrapper from '@/components/pagination-wrapper';
 import { CustomTable } from '@/components/custom-table';
 import { NoDataFound } from '@/components/noData';
 import { useGetUsersList } from '@/hooks/rq/queries/useGetUsers';
-import { Tabs, TabsList, TabsTrigger } from '@shared/components/ui/tabs';
+import { Tabs, TabsList, TabsTrigger, tabsTriggerClassName } from '@shared/components/ui/tabs';
 import { useLanguageTranslation } from '@shared/hooks/ui/useLanguageTranslation';
 import { observer } from 'mobx-react-lite';
 import { useState } from 'react';
@@ -40,7 +40,7 @@ export const Webhook = observer(function(props: Props) {
 
     <div className="w-full bg-white max-w-full overflow-y-auto border border-gray-200 rounded-md">
       <div className="bg-[#FAFAFA] rounded-md">
-        <div className="flex items-center justify-between py-4 bg-[#FAFAFA] border-b-2 border-gray-200 !h-16">
+        <div className="flex items-center justify-between py-0 bg-[#FAFAFA] border-b-2 border-gray-200">
           <Tabs orientation={'horizontal'} value={currentTab} className="p-0 pl-4">
             <TabsList className="w-full justify-start	overflow-x-auto">
               {NavList.map((e, index) => (
@@ -50,7 +50,7 @@ export const Webhook = observer(function(props: Props) {
                   onClick={() => {
                     setCurrentTab(e?.key);
                   }}
-                  className={"flex items-center !bg-[#FAFAFA] font-normal gap-2 p-2 text-md !h-16"}
+                className={tabsTriggerClassName}
                 >
                   {e.name}
                 </TabsTrigger>

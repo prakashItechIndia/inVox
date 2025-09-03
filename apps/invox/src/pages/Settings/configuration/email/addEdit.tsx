@@ -128,7 +128,7 @@ export const AddEmail = ({
             {/* Credits & Upgrade */}
             <span className="text-gray-800 font-semibold text-sm">Available Credits </span>
             <span className="text-indigo-600 text-sm">4500
-              <Button variant="outline" className='p-1 ml-2 text-[10px]' size="empty">Upgrade</Button>
+              <Button variant="outline" className='p-1 ml-2 text-[0.7rem]' size="empty">Upgrade</Button>
             </span>
           </div>
           <div>

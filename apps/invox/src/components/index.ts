@@ -1,7 +1,7 @@
 // Profile Grid Components
 export { EmptyState } from './EmptyState';
 export { ProfileCard } from './profile-card';
-export { ProfileCardSkeleton } from './ProfileCardSkeleton';
+export { ProfileCardSkeleton } from './Skeletons';
 export { ProfileGrid, TableGrid } from './tableGrid';
 
 // Other Components
