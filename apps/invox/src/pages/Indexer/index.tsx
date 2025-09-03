@@ -17,7 +17,7 @@ interface Props {
   isHiddenHeader?: boolean;
 }
 
-export const Indexer = observer(function Indexer(props: Props) {
+export const Indexing = observer(function Indexing(props: Props) {
   const { isHiddenHeader = false } = props;
   const currentPath = window.location.pathname;
   const navigate = useNavigate();

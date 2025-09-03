@@ -1,22 +1,22 @@
-import { PleaseWaitLoadText } from '@/components/please-wait-load-text';
-import { useGetUsersList } from '@/hooks/rq/queries/useGetUsers';
-import { Clarifier } from '@/pages/Clarify';
-import { Help } from '@/pages/help';
-import { Indexer } from "@/pages/Indexer";
-import { Indexing } from "@/pages/Indexer/Indexing";
-import { Invoices } from '@/pages/Invoices';
-import { Logs } from '@/pages/Logs';
-import { Settings } from '@/pages/Settings';
-import { Verifier } from '@/pages/Verifier';
-import { appState } from '@/state';
-import { observer } from 'mobx-react-lite';
-import React from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
-import { CurrentUserRole, InvoxUserType } from 'shared';
-import { NavigationRoutes } from '../common/constant';
-import { Dashboard } from '../pages/Dashboard';
-import { Profile } from '../pages/MyProfile';
-import { PrivateRoute } from '../pages/PrivateRoute';
+import { PleaseWaitLoadText } from "@/components/please-wait-load-text";
+import { useGetUsersList } from "@/hooks/rq/queries/useGetUsers";
+import { Clarifier } from "@/pages/Clarify";
+import { Help } from "@/pages/help";
+import { Indexing } from "@/pages/Indexer";
+import { InvoiceDetail } from "@/pages/Indexer/detail";
+import { Invoices } from "@/pages/Invoices";
+import { Logs } from "@/pages/Logs";
+import { Settings } from "@/pages/Settings";
+import { Verifier } from "@/pages/Verifier";
+import { appState } from "@/state";
+import { observer } from "mobx-react-lite";
+import React from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { CurrentUserRole, InvoxUserType } from "shared";
+import { NavigationRoutes } from "../common/constant";
+import { Dashboard } from "../pages/Dashboard";
+import { Profile } from "../pages/MyProfile";
+import { PrivateRoute } from "../pages/PrivateRoute";
 
 export const PrivateRoutes = observer(() => {
   // const userType = appState.user?.userType;
@@ -51,7 +51,6 @@ export const PrivateRoutes = observer(() => {
         <Route path={NavigationRoutes.Invoices} element={<Invoices />} />
         <Route path={NavigationRoutes.Clarifier} element={<Clarifier />} />
         <Route path={NavigationRoutes.Verifier} element={<Verifier />} />
-        {/* <Route path={NavigationRoutes.Indexer} element={<Verifier />} /> */}
         <Route path={NavigationRoutes.Help} element={<Help />} />
         <Route path={NavigationRoutes.Profile} element={<Profile />} />
         <Route
@@ -64,12 +63,9 @@ export const PrivateRoutes = observer(() => {
         />
         <Route
           path={NavigationRoutes.Indexer}
-          element={<Indexer portalType={userType as InvoxUserType} />}
+          element={<Indexing portalType={userType as InvoxUserType} />}
         />
-        <Route
-          path={NavigationRoutes.Indexing}
-          element={<Indexing />}
-        />
+        <Route path={NavigationRoutes.Indexing} element={<InvoiceDetail />} />
       </Route>
       <Route path="*" element={<Navigate to={NavigationRoutes.Home} />} />
     </Routes>
