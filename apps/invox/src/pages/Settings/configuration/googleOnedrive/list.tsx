@@ -32,7 +32,7 @@ export const CloudStorage = observer(function(props: Props) {
     portalType,
   } = props;
 
-  const { data, isLoading, error, refetch } = useGetUsersList(portalType);
+  const { data, isLoading, error } = useGetUsersList(portalType);
   const [currentTab, setCurrentTab] = useState('incoming');
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);

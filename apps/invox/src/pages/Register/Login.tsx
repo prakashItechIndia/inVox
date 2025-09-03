@@ -34,7 +34,7 @@ const FormSchema = z.object({
 });
 
 export const Login = observer(function () {
-  const { mutate, isPending, error, isError } = useLogin();
+  const {  isPending, error, isError } = useLogin();
   const navigate = useNavigate();
   const { t } = useLanguageTranslation();
 

@@ -32,7 +32,7 @@ export const Email = observer(function(props: Props) {
     portalType,
   } = props;
 
-  const { data, isLoading, error, refetch } = useGetUsersList(portalType);
+  const { data, isLoading, error } = useGetUsersList(portalType);
   const [currentTab, setCurrentTab] = React.useState('incoming');
   const [currentPage, setCurrentPage] = React.useState(1);
   const [itemsPerPage, setItemsPerPage] = React.useState(10);

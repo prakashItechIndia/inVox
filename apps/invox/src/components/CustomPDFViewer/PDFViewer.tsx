@@ -1,25 +1,28 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 // Import the styles for react-pdf-viewer
-import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 import "@react-pdf-viewer/core/lib/styles/index.css";
+import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 import "@react-pdf-viewer/thumbnail/lib/styles/index.css";
 
-import React, { useEffect, useRef, useState } from "react";
 import {
-  Viewer,
-  RotateDirection,
   CharacterMap,
+  RotateDirection,
   SetRenderRange,
+  Viewer,
   VisiblePagesRange,
   Worker,
 } from "@react-pdf-viewer/core";
 import { pageNavigationPlugin } from "@react-pdf-viewer/page-navigation";
-import { thumbnailPlugin } from "@react-pdf-viewer/thumbnail";
 import { rotatePlugin } from "@react-pdf-viewer/rotate";
+import { thumbnailPlugin } from "@react-pdf-viewer/thumbnail";
 import { toolbarPlugin, ToolbarSlot } from "@react-pdf-viewer/toolbar";
+import React, { useEffect, useRef, useState } from "react";
 
 // Icons (lucide-react)
+import { Button } from "@shared/components/ui/button";
+import { Separator } from "@shared/components/ui/separator";
 import { Menu, RotateCcw, RotateCw } from "lucide-react";
+import PageTitle from "../page-title";
 
 interface PdfProps {
   fileUrl: string;
@@ -49,42 +52,79 @@ const PDFViewer: React.FC<PdfProps> = ({
   const renderToolBar = (props: ToolbarSlot) => {
     const {
       CurrentPageInput,
-      Download,
-      GoToNextPage,
-      GoToPreviousPage,
+      // Download,
+      // GoToNextPage,
+      // GoToPreviousPage,
       NumberOfPages,
-      Print,
+      // Print,
       Zoom,
       ZoomIn,
       ZoomOut,
     } = props;
 
     return (
-      <div className="flex w-full items-center gap-2 px-4">
+      <div className="flex w-full items-center gap-2 px-4 text-white">
         {/* Left: menu */}
         <div className="w-1/5 flex items-center">
-          <button
+          <Button
             type="button"
             onClick={() => setSidePanelOpen((o) => !o)}
-            className="inline-flex items-center rounded-xl p-2 hover:bg-black/10 focus:outline-none"
+            className="inline-flex items-center rounded-xl p-2 hover:bg-black/10 focus:outline-none text-white"
             aria-label="Toggle thumbnails"
             title="Toggle thumbnails"
+            variant={"ghost"}
           >
-            <Menu className="h-5 w-5 opacity-60" />
-          </button>
+            <Menu className="h-5 w-5" />
+          </Button>
+
+          <PageTitle title="example.pdf" />
         </div>
 
         {/* Middle: zoom + rotate + nav + page info */}
         <div className="w-3/5 flex items-center justify-center">
-          <div className="flex items-center gap-3">
-            <ZoomOut />
+          <div className="ml-2 flex items-center gap-1 text-sm">
+            <CurrentPageInput />
+            <span>/</span>
+            <NumberOfPages />
+          </div>
+          <Separator
+            orientation="vertical"
+            className="border-dividerColor !h-8 mx-4"
+          />
+          <div className="flex items-center gap-3 !text-white">
+            <ZoomOut>
+              {(props) => (
+                <button
+                  onClick={props.onClick}
+                  className="text-white"
+                  title="Zoom Out"
+                >
+                  -
+                </button>
+              )}
+            </ZoomOut>
             <Zoom />
-            <ZoomIn />
+            <ZoomIn>
+              {(props) => (
+                <button
+                  onClick={props.onClick}
+                  className="text-white"
+                  title="Zoom Out"
+                >
+                  +
+                </button>
+              )}
+            </ZoomIn>
+            <Separator
+              orientation="vertical"
+              className="border-dividerColor !h-8 mx-4"
+            />
 
             <RotatePage>
               {(rp) => (
-                <button
+                <Button
                   type="button"
+                  variant={"ghost"}
                   onClick={() =>
                     rp.onRotatePage(currentPage, RotateDirection.Backward)
                   }
@@ -92,15 +132,16 @@ const PDFViewer: React.FC<PdfProps> = ({
                   aria-label="Rotate left"
                   title="Rotate left"
                 >
-                  <RotateCcw className="h-5 w-5 opacity-60" />
-                </button>
+                  <RotateCcw className="h-5 w-5" />
+                </Button>
               )}
             </RotatePage>
 
             <RotatePage>
               {(rp) => (
-                <button
+                <Button
                   type="button"
+                  variant={"ghost"}
                   onClick={() =>
                     rp.onRotatePage(currentPage, RotateDirection.Forward)
                   }
@@ -108,25 +149,11 @@ const PDFViewer: React.FC<PdfProps> = ({
                   aria-label="Rotate right"
                   title="Rotate right"
                 >
-                  <RotateCw className="h-5 w-5 opacity-60" />
-                </button>
+                  <RotateCw className="h-5 w-5" />
+                </Button>
               )}
             </RotatePage>
-
-            <GoToPreviousPage />
-            <GoToNextPage />
-            <div className="ml-2 flex items-center gap-1 text-sm">
-              <CurrentPageInput />
-              <span>/</span>
-              <NumberOfPages />
-            </div>
           </div>
-        </div>
-
-        {/* Right: download/print */}
-        <div className="w-1/5 flex items-center justify-end gap-2">
-          <Download />
-          <Print />
         </div>
       </div>
     );
@@ -168,7 +195,7 @@ const PDFViewer: React.FC<PdfProps> = ({
   return (
     <div className="rpv-core__viewer flex flex-col rounded-2xl shadow-sm h-[calc(100vh-140px)]">
       {/* Toolbar */}
-      <div className="flex items-center rounded-t-2xl bg-[#e5ebfa] p-1">
+      <div className="flex items-center rounded-t-2xl bg-[#323639] p-1 text-white">
         <Toolbar>{(props: ToolbarSlot) => renderToolBar(props)}</Toolbar>
       </div>
 

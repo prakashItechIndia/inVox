@@ -86,7 +86,7 @@ export const ForgotPassword = observer(function() {
       }
     >
       <Form {...form}>
-        <form
+        <form 
           id="form"
           onSubmit={form.handleSubmit(onSubmit)}
           className="w-full space-y-6">

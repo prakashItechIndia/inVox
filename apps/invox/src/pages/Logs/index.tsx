@@ -37,7 +37,7 @@ export const Logs = observer(function(props: Props) {
     portalType,
   } = props;
 
-  const { data, isLoading, error, refetch } = useGetLogsList(portalType);
+  const { data, isLoading, error } = useGetLogsList(portalType);
   const [currentTab, setCurrentTab] = useState('audit-logs');
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
