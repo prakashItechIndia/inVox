@@ -13,6 +13,7 @@ type Props = {
   initials?: string;
   isProfileUpdate?: boolean;
   loaded?: boolean;
+  avatarClassName?: string;
 };
 
 export const MyProfileImage = observer(
@@ -24,7 +25,8 @@ export const MyProfileImage = observer(
     fileId,
     initials: defaultInitials = '',
     isProfileUpdate = false,
-    loaded = false
+    loaded = false,
+    avatarClassName = ''
   }: Props) => {
     const userInfo = appState.userInfo;
     const initials = defaultInitials
@@ -53,7 +55,7 @@ export const MyProfileImage = observer(
               (!showInitials && (src || tempUrl) && !isFileError && fileId) ? (
               <>
                 <AvatarImage
-                  className="h-full w-full rounded-full border-none object-cover"
+                  className={cn("h-full w-full rounded-full border-none object-cover", avatarClassName)}
                   src={tempUrl ? tempUrl : src || ''}
                   alt="avatar"
                   loading="lazy"

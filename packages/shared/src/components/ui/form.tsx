@@ -83,20 +83,26 @@ const FormItem = React.forwardRef<
   );
 });
 FormItem.displayName = 'FormItem';
+interface FormLabelProps extends React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> {
+  required?: boolean;
+}
 
 const FormLabel = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>
+  FormLabelProps
 >(({ className, ...props }, ref) => {
   const { formItemId } = useFormField();
 
   return (
+    <>
     <Label
       ref={ref}
-      className={cn('text-xs font-normal', className)}
+      className={cn('text-md font-normal', className)}
       htmlFor={formItemId}
       {...props}
     />
+    {props?.required&&<span className='text-red-700 ml-1'>*</span>}
+    </>
   );
 });
 FormLabel.displayName = 'FormLabel';

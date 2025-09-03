@@ -78,7 +78,7 @@ export const ForgotPassword = observer(function() {
           </Button>
           <Button
             variant="link"
-            className="text-link p-0 text-xs font-normal"
+            className="text-link p-0 text-md font-normal"
             onClick={() => navigate(NavigationRoutes.SignIn)}>
             {t('FORGOT_PASSWORD.BACK_TO_LOGIN')}
           </Button>
@@ -95,7 +95,7 @@ export const ForgotPassword = observer(function() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>{t('FORGOT_PASSWORD.EMAIL')}</FormLabel>
+                <FormLabel required>{t('FORGOT_PASSWORD.EMAIL')}</FormLabel>
                 <FormControl>
                   <Input
                     placeholder={t('FORGOT_PASSWORD.EMAIL')}

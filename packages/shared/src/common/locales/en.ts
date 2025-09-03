@@ -122,7 +122,7 @@ const en = {
     PASSWORD: 'Password',
     LOGIN: 'Login',
     FORGOT_PASSWORD: 'Forgot Password',
-    SEND_RESET_LINK: 'Send Reset Link',
+    SEND_RESET_LINK: 'Send me a reset link',
     BANNER_TITLE: 'Welcome to iNvox',
     BANNER_DESCRIPTION: 'Sign in to access intelligent document processing, enhanced security, and seamless workflow automation.',
     BANNER_IMAGE_ALT: 'Banner Image Alt Text',

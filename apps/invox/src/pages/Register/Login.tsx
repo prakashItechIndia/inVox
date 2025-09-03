@@ -5,6 +5,8 @@ import { cn } from '@/lib/utils';
 import { z_email, z_password_login } from '@/lib/zod.validator';
 import { styles } from '@/styles/style';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { ReactUserMenuIcon } from '@shared/components/icons/nav-bar';
+import { ReactPasswordIcon } from '@shared/components/icons/register';
 import { Button } from '@shared/components/ui/button';
 import {
   Form,
@@ -31,7 +33,7 @@ const FormSchema = z.object({
   password: z_password_login,
 });
 
-export const Login = observer(function() {
+export const Login = observer(function () {
   const { mutate, isPending, error, isError } = useLogin();
   const navigate = useNavigate();
   const { t } = useLanguageTranslation();
@@ -116,7 +118,7 @@ export const Login = observer(function() {
             name="userName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>
+                <FormLabel required>
                   {t('LOGIN.USERNAME')}
                 </FormLabel>
                 <FormControl>
@@ -124,6 +126,7 @@ export const Login = observer(function() {
                     placeholder={t('LOGIN.USERNAME')}
                     type="email"
                     {...field}
+                    icon={<span className="absolute left-2 top-[12px] flex items-center justify-center"> <ReactUserMenuIcon className='w-4 h-4 mx-2' color="#616161" /></span>}
                   />
                 </FormControl>
                 <FormMessage />
@@ -136,9 +139,11 @@ export const Login = observer(function() {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>{t('LOGIN.PASSWORD')}</FormLabel>
+                <FormLabel required>{t('LOGIN.PASSWORD')}</FormLabel>
                 <FormControl>
-                  <PasswordInput placeholder={t('LOGIN.PASSWORD')} {...field} />
+                  <PasswordInput icon={
+                    <span className="absolute left-1 top-[8px] flex items-center justify-center">
+                      <ReactPasswordIcon className='w-6 h-6 mx-2' /></span>} placeholder={t('LOGIN.PASSWORD')} {...field} />
                 </FormControl>
                 <FormMessage />
                 <div className="relative h-0 w-full">
@@ -157,6 +162,6 @@ export const Login = observer(function() {
           />
         </form>
       </Form>
-    </Wrapper >
+    </Wrapper>
   );
 });
