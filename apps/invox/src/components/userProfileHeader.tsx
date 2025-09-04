@@ -1,5 +1,6 @@
 import { ReactCloseIcon } from "@shared/components/icons/nav-bar";
 import { Button } from "@shared/components/ui/button";
+import { cn } from "shared";
 
 interface Props {
   onClose?: () => void;
@@ -7,12 +8,19 @@ interface Props {
   title: string;
   description: string;
   icon: any;
+  className?: string;
 }
 
 export const UserProfileHeader = (props: Props) => {
-  const { submitButtonDisabled, onClose, title, description, icon } = props;
+  const { submitButtonDisabled, onClose, title, description, icon, className } =
+    props;
   return (
-    <div className="flex justify-between items-start w-full p-6 pb-2">
+    <div
+      className={cn(
+        "flex justify-between items-start w-full p-6 pb-2",
+        className
+      )}
+    >
       <div className="flex items-center w-full">
         <Button variant="outline" className="rounded-full w-16 h-16">
           {icon}

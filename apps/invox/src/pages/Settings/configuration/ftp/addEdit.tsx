@@ -70,7 +70,7 @@ export const FTPConfig = ({
                 name="ftpName"
                 render={({ field }) => (
                   <FormItem className="col-span-1">
-                    <FormLabel>FTP Name *</FormLabel>
+                    <FormLabel required>FTP Name</FormLabel>
                     <FormControl>
                       <Input {...field} placeholder="John Doe" />
                     </FormControl>
@@ -85,7 +85,7 @@ export const FTPConfig = ({
                 name="ftpServer"
                 render={({ field }) => (
                   <FormItem className="col-span-1">
-                    <FormLabel>FTP Server *</FormLabel>
+                    <FormLabel required>FTP Server</FormLabel>
                     <FormControl>
                       <Input {...field} placeholder="John Doe" />
                     </FormControl>
@@ -100,7 +100,7 @@ export const FTPConfig = ({
                 name="location"
                 render={({ field }) => (
                   <FormItem className="col-span-1">
-                    <FormLabel>Location *</FormLabel>
+                    <FormLabel required>Location</FormLabel>
                     <FormControl>
                       <CustomSelect
                         onValueChange={field.onChange}
@@ -124,7 +124,7 @@ export const FTPConfig = ({
                 name="ftpPath"
                 render={({ field }) => (
                   <FormItem className="col-span-1">
-                    <FormLabel>FTP Path *</FormLabel>
+                    <FormLabel required>FTP Path</FormLabel>
                     <FormControl>
                       <Input {...field} placeholder="Server URL" />
                     </FormControl>
@@ -139,7 +139,7 @@ export const FTPConfig = ({
                 name="userName"
                 render={({ field }) => (
                   <FormItem className="col-span-1">
-                    <FormLabel>User Name *</FormLabel>
+                    <FormLabel required>User Name</FormLabel>
                     <FormControl>
                       <Input {...field} placeholder="ie: Marcus Aminoff" />
                     </FormControl>
@@ -154,7 +154,7 @@ export const FTPConfig = ({
                 name="password"
                 render={({ field }) => (
                   <FormItem className="col-span-1">
-                    <FormLabel>Password *</FormLabel>
+                    <FormLabel required>Password</FormLabel>
                     <FormControl>
                       <Input type="password" {...field} />
                     </FormControl>
@@ -169,7 +169,7 @@ export const FTPConfig = ({
                 name="ftpPort"
                 render={({ field }) => (
                   <FormItem className="col-span-1">
-                    <FormLabel>FTP Port *</FormLabel>
+                    <FormLabel required>FTP Port</FormLabel>
                     <FormControl>
                       <Input {...field} placeholder="990" />
                     </FormControl>

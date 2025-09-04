@@ -5,7 +5,7 @@ import { observer } from "mobx-react-lite";
 import ActivityListSingleFile from "./chatCardView";
 
 interface Props {
-  type: "chat" | "table";
+  type: "chat" | "table" | "cut";
   submitText?: string;
   cancelText?: string;
 }
@@ -86,7 +86,7 @@ export const PdfDetailView = observer(function PdfDetailView({
   type = "chat",
   ...rest
 }: Props) {
-  debugger
+  debugger;
   const sampleJson = [
     {
       label: "Vendor",
@@ -150,6 +150,8 @@ export const PdfDetailView = observer(function PdfDetailView({
           <ChatInput {...{ ...rest, type }} />
         </div>
       )}
+
+      {type === "cut" && "...loading"}
     </div>
   );
 });

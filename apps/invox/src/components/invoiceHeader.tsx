@@ -55,7 +55,7 @@ export const InvoiceHeader = ({
       </div>
 
       {/* Actions span 4 columns */}
-      {type !== "chat" && (
+      {(type === "cut" || type === "table") && (
         <div className="col-span-5 flex items-center justify-between gap-3 w-full !pl-6">
           <Button
             variant="outline"
@@ -65,9 +65,11 @@ export const InvoiceHeader = ({
             <ReactClarifyChatIcon /> Clarify
           </Button>
           <div className="flex items-center justify-end gap-3 w-full">
-            <Button variant="outline" onClick={onClickReject}>
-              Reject
-            </Button>
+            {type === "cut" && (
+              <Button variant="outline" onClick={onClickReject}>
+                Reject
+              </Button>
+            )}
             <Button variant="outline" onClick={onClickSkip}>
               Skip
             </Button>

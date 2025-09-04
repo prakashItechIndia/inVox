@@ -1,17 +1,17 @@
-import { CustomSelect } from '@/components/custom-select';
-import { PleaseWaitLoadText } from '@/components/please-wait-load-text';
-import { useUsersAdd, useUsersEdit } from '@/hooks/rq/mutations/useUsers';
-import { useGetRoles } from '@/hooks/rq/queries/useGetRoles';
-import { UsersFormSchema } from '@/lib/zod.schemas';
-import { styles } from '@/styles/style';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { format, useMask } from '@react-input/mask';
-import { Button } from '@shared/components/ui/button';
+import { CustomSelect } from "@/components/custom-select";
+import { PleaseWaitLoadText } from "@/components/please-wait-load-text";
+import { useUsersAdd, useUsersEdit } from "@/hooks/rq/mutations/useUsers";
+import { useGetRoles } from "@/hooks/rq/queries/useGetRoles";
+import { UsersFormSchema } from "@/lib/zod.schemas";
+import { styles } from "@/styles/style";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { format, useMask } from "@react-input/mask";
+import { Button } from "@shared/components/ui/button";
 import {
   Dialog,
   DialogContent,
-  DialogFooter
-} from '@shared/components/ui/dialog';
+  DialogFooter,
+} from "@shared/components/ui/dialog";
 import {
   Form,
   FormControl,
@@ -19,26 +19,26 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@shared/components/ui/form';
-import { Input } from '@shared/components/ui/input';
-import { Separator } from '@shared/components/ui/separator';
+} from "@shared/components/ui/form";
+import { Input } from "@shared/components/ui/input";
+import { Separator } from "@shared/components/ui/separator";
 import { Switch } from "@shared/components/ui/switch"; // Adjust the import path as necessary
-import { useLanguageTranslation } from '@shared/hooks/ui/useLanguageTranslation';
-import React from 'react';
-import { useForm } from 'react-hook-form';
+import { useLanguageTranslation } from "@shared/hooks/ui/useLanguageTranslation";
+import React from "react";
+import { useForm } from "react-hook-form";
 import {
   cn,
   GetUserResponse,
   InvoxUserType,
   RoleType,
-  RoleTypeName
-} from 'shared';
-import { toast } from 'sonner';
-import { z } from 'zod';
-import { UserProfileCard } from './profileCard';
+  RoleTypeName,
+} from "shared";
+import { toast } from "sonner";
+import { z } from "zod";
+import { UserProfileCard } from "./profileCard";
 
 const options = {
-  mask: '(___) ___-____',
+  mask: "(___) ___-____",
   replacement: { _: /\d/ },
 };
 type Props = {
@@ -65,41 +65,41 @@ export const AddUsers = (props: Props) => {
     isPending: isEditPending,
     isError: isEditError,
     error: isEditErrorResponse,
-  } = useUsersEdit(editUser?.id || ''); // Pass userId for editing
+  } = useUsersEdit(editUser?.id || ""); // Pass userId for editing
   const submitButtonDisabled = isPending || isEditPending; // Replace with actual loading state
 
   const form = useForm<z.infer<typeof UsersFormSchema>>({
     resolver: zodResolver(UsersFormSchema),
-    mode: 'onTouched',
+    mode: "onTouched",
     defaultValues: {
-      firstName: editUser?.firstName || '',
-      lastName: editUser?.lastName || '', // Added lastName to defaultValues
-      email: editUser?.email || '', // Added email to defaultValues
-      phoneNumber: editUser?.phoneNumber ? `${editUser?.phoneNumber}` : '', // Added phoneNumber to defaultValues
+      firstName: editUser?.firstName || "",
+      lastName: editUser?.lastName || "", // Added lastName to defaultValues
+      email: editUser?.email || "", // Added email to defaultValues
+      phoneNumber: editUser?.phoneNumber ? `${editUser?.phoneNumber}` : "", // Added phoneNumber to defaultValues
     },
   });
   const onSubmit = async (data: z.infer<typeof UsersFormSchema>) => {
     const bodyData = {
       ...data,
       phoneNumber: data.phoneNumber
-        ? Number(data.phoneNumber.replace(/\D/g, ''))
+        ? Number(data.phoneNumber.replace(/\D/g, ""))
         : null,
-      countryCode: data.phoneNumber ? '+1' : null,
+      countryCode: data.phoneNumber ? "+1" : null,
       userType: portalType,
       status: editUser?.status ?? true,
-      removedPictureId: '',
+      removedPictureId: "",
     };
     if (isEdit) {
       updateMutate(bodyData, {
         onSuccess: () => {
-          toast.success(t('USERS.TOAST.UPDATE_SUCCESS'));
+          toast.success(t("USERS.TOAST.UPDATE_SUCCESS"));
           onSuccess?.();
         },
       });
     } else {
       addMutate(bodyData, {
         onSuccess: () => {
-          toast.success(t('USERS.TOAST.ADD_SUCCESS'));
+          toast.success(t("USERS.TOAST.ADD_SUCCESS"));
           onSuccess?.();
         },
       });
@@ -109,12 +109,12 @@ export const AddUsers = (props: Props) => {
   React.useEffect(() => {
     if (isAddError && isAddErrorResponse) {
       toast.error(
-        t('COMMON.TOAST.ERROR_PREFIX') + ': ' + isAddErrorResponse?.message,
+        t("COMMON.TOAST.ERROR_PREFIX") + ": " + isAddErrorResponse?.message
       );
     }
     if (isEditError && isEditErrorResponse) {
       toast.error(
-        t('COMMON.TOAST.ERROR_PREFIX') + ': ' + isEditErrorResponse?.message,
+        t("COMMON.TOAST.ERROR_PREFIX") + ": " + isEditErrorResponse?.message
       );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -137,10 +137,11 @@ export const AddUsers = (props: Props) => {
           form={form}
           submitButtonDisabled={submitButtonDisabled}
           onClose={onClose}
+          profileCardClassName="p-0"
         />
 
         {/* Form Section */}
-        <Separator className='my-4' />
+        <Separator className="my-4" />
         <div className="px-8 py-0">
           <Form {...form}>
             <form
@@ -154,7 +155,7 @@ export const AddUsers = (props: Props) => {
                   name="firstName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>First Name *</FormLabel>
+                      <FormLabel required>First Name</FormLabel>
                       <FormControl>
                         <Input
                           {...field}
@@ -170,7 +171,7 @@ export const AddUsers = (props: Props) => {
                   name="lastName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Last Name *</FormLabel>
+                      <FormLabel required>Last Name</FormLabel>
                       <FormControl>
                         <Input
                           {...field}
@@ -186,11 +187,13 @@ export const AddUsers = (props: Props) => {
                   name="email"
                   render={({ field }) => (
                     <FormItem className="col-span-1">
-                      <FormLabel>Email *</FormLabel>
+                      <FormLabel required>Email</FormLabel>
                       <FormControl>
                         <Input
                           {...field}
-                          placeholder={!isEdit ? "ie; johndoe@mail.com" : undefined}
+                          placeholder={
+                            !isEdit ? "ie; johndoe@mail.com" : undefined
+                          }
                         />
                       </FormControl>
                       <FormMessage />
@@ -202,7 +205,7 @@ export const AddUsers = (props: Props) => {
                   name="phoneNumber"
                   render={({ field }) => (
                     <FormItem className="col-span-1">
-                      <FormLabel>Phone Number *</FormLabel>
+                      <FormLabel required>Phone Number</FormLabel>
                       <FormControl>
                         <Input
                           icon={
@@ -210,12 +213,12 @@ export const AddUsers = (props: Props) => {
                               +1
                             </span>
                           }
-                          placeholder={t('USERS.ADD_USER.PHONE_NUMBER')}
-                          defaultValue={format(field.value || '', options)} // Sets the default value
+                          placeholder={t("USERS.ADD_USER.PHONE_NUMBER")}
+                          defaultValue={format(field.value || "", options)} // Sets the default value
                           onChange={(e) => {
                             const value = e.currentTarget.value.replace(
                               /\D/g,
-                              '',
+                              ""
                             );
                             if (value.length > 10) {
                               e.preventDefault();
@@ -234,7 +237,7 @@ export const AddUsers = (props: Props) => {
                   name="roleId"
                   render={({ field }) => (
                     <FormItem className="col-span-1">
-                      <FormLabel>Role *</FormLabel>
+                      <FormLabel required>Role</FormLabel>
                       <FormControl>
                         <CustomSelect
                           onValueChange={field.onChange}
@@ -268,28 +271,25 @@ export const AddUsers = (props: Props) => {
             </form>
           </Form>
         </div>
-        <Separator className='mt-4' />
+        <Separator className="mt-4" />
         {/* Footer */}
         <DialogFooter className="flex items-center justify-end p-4 pt-0">
-          <Button
-            type="button"
-            variant={'outline'}
-            onClick={onClose}
-          >
-            {t('USERS.ADD_USER.CANCEL')}
+          <Button type="button" variant={"outline"} onClick={onClose}>
+            {t("USERS.ADD_USER.CANCEL")}
           </Button>
           <Button
             className={cn(styles.SubmitButton)}
             type="submit"
             tabIndex={-1}
             form="form"
-            disabled={false}>
+            disabled={false}
+          >
             {submitButtonDisabled ? (
               <PleaseWaitLoadText />
             ) : isEdit ? (
-              t('USERS.ADD_USER.EDIT_SUBMIT')
+              t("USERS.ADD_USER.EDIT_SUBMIT")
             ) : (
-              t('USERS.ADD_USER.SUBMIT')
+              t("USERS.ADD_USER.SUBMIT")
             )}
           </Button>
         </DialogFooter>

@@ -1,7 +1,7 @@
 import { MyProfileImage, PageTitle } from "@/components";
-import logo from "@shared/assets/icons/Group 18.png";
 import iTecghlogo from "@shared/assets/icons/Group 6.png";
 import BannerImage from "@shared/assets/icons/login.jpg";
+import { ReactLoginIcon } from "@shared/components/icons/register";
 import { useLanguageTranslation } from "@shared/hooks/ui/useLanguageTranslation";
 import React from "react";
 import { cn } from "shared";
@@ -30,15 +30,15 @@ export const Wrapper: React.FC<WrapperProps> = ({
   const { t } = useLanguageTranslation();
 
   return (
-    <div className="p-12 pr-0 relative bg-[#F5F5F5] h-full overflow-auto">
+    <div className="p-12 pr-0 relative bg-[#e6e6e6] h-full overflow-auto">
       <div className="grid grid-cols-1 lg:grid-cols-12 w-full h-full">
         {/* Banner Section */}
-        <div className="hidden lg:flex col-span-1 lg:col-span-8 relative flex-col justify-end shadow-lg rounded-3xl overflow-hidden z-10 lg:mb-0">
+        <div className="hidden lg:flex col-span-1 lg:col-span-8 relative flex-col justify-end shadow-lg rounded-[3rem] overflow-hidden !z-[1000] lg:mb-0 border-[6px] border-white">
           <MyProfileImage
-            className="absolute inset-0 w-full h-full object-cover !rounded-none filter brightness-75"
+            className="absolute inset-0 w-full h-full object-cover !rounded-none filter brightness-75 !z-[1000]  "
             imageUrl={BannerImage}
             loaded={true}
-            avatarClassName="!rounded-none filter"
+            avatarClassName="!rounded-none filter  !z-[1000]"
             fileId={"id"}
           />
           <div className="absolute inset-0 bg-black opacity-40 z-10" />
@@ -60,7 +60,7 @@ export const Wrapper: React.FC<WrapperProps> = ({
             className={cn("p-8 lg:p-[6rem] lg:pb-[0.5rem]", loginFormclassName)}
           >
             <div className="flex items-center !mb-20">
-              <img src={logo} alt={t("LOGIN.LOGO_ALT")} className="h-8 mr-3" />
+              <ReactLoginIcon className="w-10 h-10 mr-4" />
               <span className="font-semibold text-xl text-[#3d3d4e]">
                 {t("LOGIN.BRAND")}
               </span>
@@ -94,30 +94,33 @@ export const Wrapper: React.FC<WrapperProps> = ({
               </div>
             )}
           </div>
-          <div className="p-[6rem] pb-[3rem] pt-[2rem] flex items-center justify-between w-full bg-[#F5F5F5]">
-            <div className="text-md text-gray-400">
-              <div className="mb-2">
-                {t("LOGIN.NEED_HELP")}{" "}
-                <a href="#" className="underline font-medium text-gray-700">
-                  {t("LOGIN.CONTACT_SUPPORT")}
-                </a>
+          <div className="absolute bottom-0 right-0 left-[60vw] flex justify-end bg-gradient-to-r from-white to-[#F5F5F5]">
+            <div className="!w-[33vw] p-[6rem] pb-[3rem] pt-[2rem] flex items-center justify-between w-full">
+              <div className="text-md text-gray-400">
+                <div className="mb-2">
+                  {t("LOGIN.NEED_HELP")}{" "}
+                  <a href="#" className="underline font-medium text-gray-700">
+                    {t("LOGIN.CONTACT_SUPPORT")}
+                  </a>
+                </div>
+                <span>
+                  © 2024 {t("LOGIN.BRAND")}. {t("LOGIN.ALL_RIGHTS_RESERVED")}
+                </span>
               </div>
-              <span>
-                © 2024 {t("LOGIN.BRAND")}. {t("LOGIN.ALL_RIGHTS_RESERVED")}
+              <span className="ml-4 text-gray-400 text-[0.7rem]">
+                {t("LOGIN.POWERED_BY")}
+                <img
+                  src={iTecghlogo}
+                  alt={t("LOGIN.POWERED_BY_ALT")}
+                  className="h-6 ml-1"
+                />
               </span>
             </div>
-            <span className="ml-4 text-gray-400 text-[0.7rem]">
-              {t("LOGIN.POWERED_BY")}
-              <img
-                src={iTecghlogo}
-                alt={t("LOGIN.POWERED_BY_ALT")}
-                className="h-6 ml-1"
-              />
-            </span>
           </div>
         </div>
       </div>
-      <div className="bg-white absolute right-0 top-0 bottom-[19vh] rounded-tl-[10vh] rounded-bl-[6vh] w-[60%]" />
+
+      <div className="bg-white absolute right-0 top-0 bottom-[19vh] rounded-tl-[10vh] rounded-bl-[6vh] w-[60%] h-full" />
     </div>
   );
 };

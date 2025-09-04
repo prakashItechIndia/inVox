@@ -1,11 +1,10 @@
 import { NavigationRoutes } from "@/common/constant";
 import { appState } from "@/state";
-import { BellIcon } from "@radix-ui/react-icons";
-import { ReactPremiumIcon } from "@shared/components/icons/nav-bar";
+import { ReactAlertIcon, ReactPremiumIcon, ReactThemeIcon } from "@shared/components/icons/nav-bar";
 import { BadgeWrapper } from "@shared/components/ui/badge";
 import { Button } from "@shared/components/ui/button";
 import { Separator } from "@shared/components/ui/separator";
-import { EllipsisVertical, Moon, Search } from "lucide-react";
+import { EllipsisVertical, Search } from "lucide-react";
 import { Link } from "react-router-dom";
 import { MyProfileImage } from "./myProfileImage";
 import PageTitle from "./page-title";
@@ -34,13 +33,13 @@ export default function TopNavbar() {
       <div className="flex items-center space-x-6">
 
         {/* Theme Toggle */}
-        <Moon className="h-6 w-6 text-gray-600 cursor-pointer" />
+        <ReactThemeIcon className="h-6 w-6 text-gray-600 cursor-pointer" />
 
         {/* Search */}
-        <Search className="h-6 w-6 text-gray-600 cursor-pointer" />
+        <Search className="h-6 w-6 text-[#616161ab] cursor-pointer" />
 
         {/* Notification */}
-        <BellIcon className="h-6 w-6 text-gray-600 cursor-pointer" />
+        <ReactAlertIcon className="h-6 w-6 text-gray-600 cursor-pointer" />
 
         <Separator orientation="vertical" className="border-dividerColor !h-10" />
 

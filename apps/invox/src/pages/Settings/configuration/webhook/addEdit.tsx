@@ -65,7 +65,7 @@ export const WebhookConfig = ({
                 name="webhookName"
                 render={({ field }) => (
                   <FormItem className="col-span-1">
-                    <FormLabel>Webhook Name *</FormLabel>
+                    <FormLabel required>Webhook Name</FormLabel>
                     <FormControl>
                       <Input {...field} placeholder="Order Notification" />
                     </FormControl>
@@ -79,7 +79,7 @@ export const WebhookConfig = ({
                 name="eventTrigger"
                 render={({ field }) => (
                   <FormItem className="col-span-1">
-                    <FormLabel>Event Trigger *</FormLabel>
+                    <FormLabel required>Event Trigger</FormLabel>
                     <FormControl>
                       <CustomSelect
                         value={field.value}
@@ -102,7 +102,7 @@ export const WebhookConfig = ({
                 name="targetUrl"
                 render={({ field }) => (
                   <FormItem className="col-span-1">
-                    <FormLabel>Target URL *</FormLabel>
+                    <FormLabel required>Target URL</FormLabel>
                     <FormControl>
                       <Input {...field} placeholder="https://yourdomain.com/webhook" />
                     </FormControl>
@@ -116,7 +116,7 @@ export const WebhookConfig = ({
                 name="method"
                 render={({ field }) => (
                   <FormItem className="col-span-1">
-                    <FormLabel>Method *</FormLabel>
+                    <FormLabel required>Method</FormLabel>
                     <FormControl>
                       <CustomSelect
                         value={field.value}
@@ -138,7 +138,7 @@ export const WebhookConfig = ({
                 name="authToken"
                 render={({ field }) => (
                   <FormItem className="col-span-1">
-                    <FormLabel>Auth Token (optional)</FormLabel>
+                    <FormLabel required>Auth Token (optional)</FormLabel>
                     <FormControl>
                       <Input type="password" {...field} placeholder="Bearer token" />
                     </FormControl>

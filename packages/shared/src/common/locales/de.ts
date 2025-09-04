@@ -245,6 +245,7 @@ export default {
       UPDATE_SUCCESS: "Benutzer erfolgreich aktualisiert!",
     },
     TITLE: "Benutzer",
+    ADD_USER_TITLE: "Add User",
     FETCH_NEXT_PAGE: "Klicken oder scrollen Sie nach unten, um mehr zu laden",
     NO_MORE: "Keine weiteren Einträge",
     SEARCH_PLACEHOLDER: "Benutzer suchen",
@@ -335,7 +336,7 @@ export default {
     TITLE: "Kontakt/Hilfe",
     NAME: "Invox Kundendienst",
     EMAIL: "info@Invox.com",
-    PHONE: "877-713-9829",
+    PHONE: "000-111-000",
   },
   FAQ: {
     TITLE: "Häufig gestellte Fragen",

@@ -24,7 +24,7 @@ export const InvoiceDetail = observer(function InvoiceDetail() {
 
   const typeFunction = () => {
     if (detailViewType === "indexer") {
-      return "";
+      return "cut";
     } else if (detailViewType === "verifier") {
       return "table";
     } else if (detailViewType === "clarifier") {
@@ -32,7 +32,7 @@ export const InvoiceDetail = observer(function InvoiceDetail() {
     } else if (detailViewType === "organisationAdmin") {
       return "table";
     } else {
-      return "";
+      return "chat";
     }
   };
 
@@ -68,8 +68,8 @@ export const InvoiceDetail = observer(function InvoiceDetail() {
         </div>
         <div className="col-span-5 h-full overflow-auto !pl-6">
           <PdfDetailView
-            // type={typeFunction()}
-            type="chat"
+            type={typeFunction()}
+            // type="chat"
             submitText={"Submit"}
             cancelText={"Move to Client"}
           />

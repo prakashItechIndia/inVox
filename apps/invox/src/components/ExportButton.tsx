@@ -29,6 +29,7 @@ export const ExportButton = (props: ButtonProps) => {
           {...(!props.onClick && props?.enableExportClick
             ? { onClick: exportLoansReports }
             : {})}
+            className='pr-2'
         >
           <ReactExportIcon className="text-highlight" />
           {t('COMMON.EXPORT')}

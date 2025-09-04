@@ -150,7 +150,7 @@ export default function PaginationWrapper({
         <CustomSelect
           onValueChange={e => onPageSizeChange(Number(e))}
           value={`${itemsPerPage}`}
-          className="text-md w-14 rounded border px-2"
+          className="text-md w-18 rounded border px-2"
           options={pageSizeOptions.map(size => ({
             value: String(size),
             label: String(size),

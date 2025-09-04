@@ -10,6 +10,8 @@ import ReactIconBulkUpload from '../../assets/icons/nav-bar/upload.svg?react';
 import ReactIndexingIcons from '../../assets/icons/nav-bar/indexing.svg?react';
 import ReactVerifyIcons from '../../assets/icons/nav-bar/verify.svg?react';
 import ReactPremiumIcons from '../../assets/icons/Crown.svg?react';
+import ReactThemeIcons from '../../assets/icons/theme.svg?react';
+import ReactAlertIcons from '../../assets/icons/Alert.svg?react';
 
 export const ReactDashboardMenuIcon: CustomSVGIconType = ({ className, variant }) => {
   return (
@@ -126,6 +128,24 @@ export const ReactVerifyIcon: CustomSVGIconType = ({ className, variant }) => {
 export const ReactPremiumIcon: CustomSVGIconType = ({ className, variant }) => {
   return (
     <ReactPremiumIcons
+      className={className}
+      style={{ fill: variant === 'on' ? '#FFFFFF' : '#FFFFFF' }}
+    />
+  );
+};
+
+export const ReactThemeIcon: CustomSVGIconType = ({ className, variant }) => {
+  return (
+    <ReactThemeIcons
+      className={className}
+      style={{ fill: variant === 'on' ? '#FFFFFF' : '#FFFFFF' }}
+    />
+  );
+};
+
+export const ReactAlertIcon: CustomSVGIconType = ({ className, variant }) => {
+  return (
+    <ReactAlertIcons
       className={className}
       style={{ fill: variant === 'on' ? '#FFFFFF' : '#FFFFFF' }}
     />

@@ -1,7 +1,5 @@
 import { MyProfileImage } from "@/components/myProfileImage";
-import {
-  UserProfileHeader
-} from "@/components/userProfileHeader";
+import { UserProfileHeader } from "@/components/userProfileHeader";
 import { GetUserResponse } from "@shared/_api/api";
 import { ReactUserMenuIcon } from "@shared/components/icons/nav-bar";
 import { Button } from "@shared/components/ui/button";
@@ -16,10 +14,18 @@ interface ProfileCardProps {
   form: any;
   submitButtonDisabled: boolean;
   onClose?: () => void;
+  profileCardClassName?: string;
 }
 
 export const UserProfileCard = (props: ProfileCardProps) => {
-  const { isEdit, editUser, form, submitButtonDisabled, onClose } = props;
+  const {
+    isEdit,
+    editUser,
+    form,
+    submitButtonDisabled,
+    onClose,
+    profileCardClassName,
+  } = props;
   const fileRef: React.RefObject<HTMLInputElement> = useRef(null);
   const [file, setFile] = useState<File | null>(null);
 
@@ -84,7 +90,8 @@ export const UserProfileCard = (props: ProfileCardProps) => {
             onClose={onClose}
             title={"Add New User"}
             description={"Enter user details to create a new account."}
-            icon={<ReactUserMenuIcon/>}
+            icon={<ReactUserMenuIcon className="w-6 h-6" />}
+            className={profileCardClassName}
           />
           <Separator className="my-4" />
           {renderImageSection()}

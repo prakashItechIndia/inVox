@@ -65,7 +65,7 @@ export const CloudStorageConfig = ({
                 name="integrationName"
                 render={({ field }) => (
                   <FormItem className="col-span-1">
-                    <FormLabel>Integration Name *</FormLabel>
+                    <FormLabel required>Integration Name</FormLabel>
                     <FormControl>
                       <Input {...field} placeholder="e.g. Marketing Drive Sync" />
                     </FormControl>
@@ -79,7 +79,7 @@ export const CloudStorageConfig = ({
                 name="provider"
                 render={({ field }) => (
                   <FormItem className="col-span-1">
-                    <FormLabel>Service Provider *</FormLabel>
+                    <FormLabel required>Service Provider</FormLabel>
                     <FormControl>
                       <CustomSelect
                         value={field.value}
@@ -101,7 +101,7 @@ export const CloudStorageConfig = ({
                 name="folderPath"
                 render={({ field }) => (
                   <FormItem className="col-span-1">
-                    <FormLabel>Folder Path *</FormLabel>
+                    <FormLabel required>Folder Path</FormLabel>
                     <FormControl>
                       <Input {...field} placeholder="/Marketing/Reports" />
                     </FormControl>
@@ -115,7 +115,7 @@ export const CloudStorageConfig = ({
                 name="syncFrequency"
                 render={({ field }) => (
                   <FormItem className="col-span-1">
-                    <FormLabel>Sync Frequency *</FormLabel>
+                    <FormLabel required>Sync Frequency</FormLabel>
                     <FormControl>
                       <CustomSelect
                         value={field.value}
@@ -138,7 +138,7 @@ export const CloudStorageConfig = ({
                 name="accessToken"
                 render={({ field }) => (
                   <FormItem className="col-span-1">
-                    <FormLabel>Access Token *</FormLabel>
+                    <FormLabel required>Access Token</FormLabel>
                     <FormControl>
                       <Input type="password" {...field} placeholder="OAuth token" />
                     </FormControl>

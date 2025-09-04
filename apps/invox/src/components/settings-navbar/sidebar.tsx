@@ -18,7 +18,6 @@ import { useEffect, useState } from 'react';
 import { useWindowSize } from 'usehooks-ts';
 import { SubNav } from './nav';
 
-
 interface SideNavbarProps {
   isCollapsed: boolean;
   setIsCollapsed: (collapse: boolean) => void;
@@ -131,7 +130,6 @@ export default function SideNavbar({
       <div className="absolute right-[-12px] top-[5%]">
         <Button
           onClick={toggleSidebar}
-          variant="outline"
           className=" bg-highlight text-white relative z-50 h-8 w-8 rounded-full p-1.5 !hover:bg:highlight">
           {isCollapsed ? <ChevronRight /> : <ChevronLeft />}
         </Button>

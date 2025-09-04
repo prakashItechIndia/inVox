@@ -61,7 +61,7 @@ export const AddEmail = ({
                 name="emailId"
                 render={({ field }) => (
                   <FormItem className="col-span-2">
-                    <FormLabel>Email ID *</FormLabel>
+                    <FormLabel required>Email ID</FormLabel>
                     <FormControl>
                       <div className="flex items-center">
                         <Input {...field} placeholder="John Doe" className="w-full" />
@@ -79,7 +79,7 @@ export const AddEmail = ({
                 name="name"
                 render={({ field }) => (
                   <FormItem className="col-span-1">
-                    <FormLabel>Name *</FormLabel>
+                    <FormLabel required>Name</FormLabel>
                     <FormControl>
                       <Input {...field} placeholder="ie: john doe" />
                     </FormControl>
@@ -94,7 +94,7 @@ export const AddEmail = ({
                 name="location"
                 render={({ field }) => (
                   <FormItem className="col-span-1">
-                    <FormLabel>Location *</FormLabel>
+                    <FormLabel required>Location</FormLabel>
                     <FormControl>
                       <CustomSelect
                         onValueChange={field.onChange}

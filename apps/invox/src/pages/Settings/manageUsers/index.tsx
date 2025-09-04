@@ -59,7 +59,7 @@ export const ManageUsers = observer(function(props: Props) {
         isLoading={isLoading}
         title={t('USERS.TITLE')}
         actionBtnClick={() => handleOpenAndClose()}
-        addBtnText={t('USERS.TITLE')}
+        addBtnText={t('USERS.ADD_USER_TITLE')}
         hiddenFilterDropdown={true}
         hiddenSearch={true}
       />

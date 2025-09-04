@@ -247,6 +247,7 @@ const en = {
       UPDATE_SUCCESS: "User updated successfully!",
     },
     TITLE: "Manage Users",
+    ADD_USER_TITLE: "Add User",
     FETCH_NEXT_PAGE: "CLICK OR SCROLL DOWN to Load More",
     NO_MORE: "No More",
     SEARCH_PLACEHOLDER: "Search by name, email, or phone number",
@@ -337,7 +338,7 @@ const en = {
     TITLE: "Contact/Help",
     NAME: "Invox Client Services",
     EMAIL: "info@Invox.com",
-    PHONE: "877-713-9829",
+    PHONE: "000-111-000",
   },
   FAQ: {
     TITLE: "FAQ’s",
