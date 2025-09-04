@@ -1,4 +1,3 @@
-import { styles } from '@/styles/style';
 import { ArrowDownIcon, ArrowUpIcon } from '@shared/components/icons/invoice';
 import { ReactExportIcon } from '@shared/components/icons/user';
 import { Button, buttonVariants } from '@shared/components/ui/button';
@@ -25,7 +24,6 @@ export const ExportButton = (props: ButtonProps) => {
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild ref={closeRef}>
         <Button
-          className={styles.filterButton}
           type="button"
           {...props}
           {...(!props.onClick && props?.enableExportClick

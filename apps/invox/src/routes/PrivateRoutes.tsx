@@ -3,7 +3,7 @@ import { useGetUsersList } from "@/hooks/rq/queries/useGetUsers";
 import { Clarifier } from "@/pages/Clarify";
 import { Help } from "@/pages/help";
 import { Indexing } from "@/pages/Indexer";
-import { InvoiceDetail } from "@/pages/Indexer/detail";
+import { InvoiceDetail } from "@/pages/Invoices/detail";
 import { Invoices } from "@/pages/Invoices";
 import { Logs } from "@/pages/Logs";
 import { Settings } from "@/pages/Settings";

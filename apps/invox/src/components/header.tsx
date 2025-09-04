@@ -70,9 +70,7 @@ export const Header = ({
         {/* Sort Button */}
 
         {!hiddenSort && (
-          <div className="border border-gray-200 rounded-md">
             <SortButton />
-          </div>
         )}
 
         {!hiddenExport && (

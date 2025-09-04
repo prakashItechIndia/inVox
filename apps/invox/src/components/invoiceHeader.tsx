@@ -1,64 +1,91 @@
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { ReactAddIcon } from "@shared/components/icons/user";
+import { styles } from "@/styles/style";
+import {
+  ReactChatShareIcon,
+  ReactClarifyChatIcon,
+} from "@shared/components/icons/invoice";
 import { Button } from "@shared/components/ui/button";
-import { SearchFilter } from "@shared/components/ui/searchFilter";
+import { Separator } from "@shared/components/ui/separator";
+import { ChevronLeft } from "lucide-react";
 import { cn } from "shared";
-import { ExportButton } from "./ExportButton";
-import { FilterButton, SortButton } from "./filterButton";
 import PageTitle from "./page-title";
-import { PleaseWaitLoadText } from "./please-wait-load-text";
 
 interface InvoiceHeaderProps {
-  actionBtnClick?: () => void;
+  handleSave?: () => void;
   isLoading?: boolean;
-  addBtnText?: string;
-  searchPlaceHolder?: string;
   title: string;
-  hiddenFilterDropdown?: boolean;
   className?: string;
-  hiddenSearch?: boolean;
-  hiddenAddButton?: boolean;
   hiddenSort?: boolean;
-  hiddenExport?: boolean;
+  handleBack?: () => void;
+  type: string;
+  onClickClarify?: () => void;
+  onClickReject?: () => void;
+  onClickSkip?: () => void;
 }
 
 export const InvoiceHeader = ({
-  actionBtnClick,
-  isLoading,
-  addBtnText,
-  searchPlaceHolder,
-  title = '',
-  hiddenFilterDropdown,
+  title,
   className,
-  hiddenSearch,
-  hiddenAddButton,
-  hiddenExport,
-  hiddenSort
+  handleSave,
+  isLoading = false,
+  hiddenSort = false,
+  handleBack = () => null,
+  type = "chat",
+  onClickClarify = () => null,
+  onClickReject = () => null,
+  onClickSkip = () => null,
 }: InvoiceHeaderProps) => {
   return (
-    <div className={cn('flex items-center justify-between px-6 max-h-full min-h-20 bg-white', className)}>
-      {/* Title */}
-     {/* <Button><Back/></Button> */}
-      <PageTitle title={title} />
+    <div
+      className={cn(
+        "grid grid-cols-12 items-center py-5 bg-white gap-4",
+        className
+      )}
+    >
+      {/* Title spans 2 columns */}
+      <div className="col-span-7 flex gap-3 items-center">
+        <Button
+          variant={"outline"}
+          className={cn(styles.filterButton)}
+          size={"empty"}
+          onClick={() => handleBack?.()}
+        >
+          <ChevronLeft />
+        </Button>
+        <PageTitle title={title} />
+      </div>
 
-      {/* Actions */}
-      <div className="flex items-center">
-        <div className="w-full flex space-between">
-        {/* Search */}
-               <div>
-                <Button variant={'outline'}>Clarify</Button>
-               </div>
+      {/* Actions span 4 columns */}
+      {type !== "chat" && (
+        <div className="col-span-5 flex items-center justify-between gap-3 w-full !pl-6">
+          <Button
+            variant="outline"
+            className="gap-1"
+            onClick={() => onClickClarify?.()}
+          >
+            <ReactClarifyChatIcon /> Clarify
+          </Button>
+          <div className="flex items-center justify-end gap-3 w-full">
+            <Button variant="outline" onClick={onClickReject}>
+              Reject
+            </Button>
+            <Button variant="outline" onClick={onClickSkip}>
+              Skip
+            </Button>
 
-<div>
-            <Button variant={'outline'}>Skip</Button>
-        <Button>Save</Button>
+            <Button onClick={handleSave} disabled={isLoading}>
+              {isLoading ? "Saving..." : "Save"}
+            </Button>
 
-         <div className="border border-gray-200 rounded-md">
-            <SortButton />
+            <Separator orientation="vertical" className="h-10 mx-2" />
+
+            {!hiddenSort && (
+              <Button variant="outline" size={"empty"} className="p-2">
+                <ReactChatShareIcon />
+              </Button>
+            )}
           </div>
-</div>
-      </div>
-      </div>
+        </div>
+      )}
     </div>
   );
 };

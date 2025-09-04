@@ -18,7 +18,7 @@ export const styles = {
   termsAndConditions: 'flex w-full justify-between text-sm',
   ActionButton: 'h-[44px] bg-blueDark text-sm font-bold rounded-lg',
   filterButton:
-    'h-10 w-10 border-1 border-gray-300 rounded-md flex items-center justify-center p-0',
+    'h-10 w-10 !border !border-gray-300 rounded-md flex items-center justify-center p-0',
   downloadTemplate:
     'h-[44px] bg-white border-dividerColor text-sm font-bold rounded-lg text-blueDark border hover:bg-white/90 gap-2',
   EditButton:

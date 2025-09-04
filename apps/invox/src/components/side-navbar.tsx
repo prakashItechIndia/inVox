@@ -79,14 +79,14 @@ const NavMenu = observer(
         {
           title: t('NAVBAR.DASHBOARD'),
           href: NavigationRoutes.Dashboard,
-          icon: ReactIndexingIcon,
+          icon: ReactDashboardMenuIcon,
           variant: 'ghost',
           visible: true,
         },
         {
           title: t('NAVBAR.INDEXER'),
           href: NavigationRoutes.Indexer,
-          icon: ReactVerifyIcon,
+          icon: ReactIndexingIcon,
           variant: 'ghost',
           visible: true,
         }
@@ -95,7 +95,7 @@ const NavMenu = observer(
         {
           title: t('NAVBAR.DASHBOARD'),
           href: NavigationRoutes.Dashboard,
-          icon: ReactIndexingIcon,
+          icon: ReactDashboardMenuIcon,
           variant: 'ghost',
           visible: true,
         },
@@ -111,7 +111,7 @@ const NavMenu = observer(
         {
           title: t('NAVBAR.DASHBOARD'),
           href: NavigationRoutes.Dashboard,
-          icon: ReactIndexingIcon,
+          icon: ReactDashboardMenuIcon,
           variant: 'ghost',
           visible: true,
         },

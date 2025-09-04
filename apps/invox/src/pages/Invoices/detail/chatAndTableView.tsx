@@ -1,28 +1,31 @@
 import { PageTitle } from "@/components";
-import {
-    ReactEmojiIcon,
-    ReactUploadIcon,
-} from "@shared/components/icons/invoice";
-import { Button } from "@shared/components/ui/button";
+import { ChatInput } from "@/components/chatInput";
+import { Separator } from "@shared/components/ui/separator";
 import { observer } from "mobx-react-lite";
-import ActivityListSingleFile from "./chatCard";
+import ActivityListSingleFile from "./chatCardView";
+
+interface Props {
+  type: "chat" | "table";
+  submitText?: string;
+  cancelText?: string;
+}
 
 const LabelRow = ({ label, value }: { label: string; value: string }) => (
-  <div className="flex items-center gap-x-16 py-1 !p-3 border border-[#E0E0E0] shadow-custom rounded-md">
-    <span className="text-md text-blackTextColor">{label}</span>
+  <div className="flex items-center gap-x-16 py-3 !px-8 border border-[#E0E0E0] shadow-custom rounded-md">
+    <span className="text-md text-blackTextColor w-[6vw]">{label}</span>
     <span className="text-md font-semibold text-blackTextColor">{value}</span>
   </div>
 );
 
 const InvoiceTable = () => (
-  <table className="w-full !rounded-lg overflow-hidden">
+  <table className="w-full">
     <thead className="bg-HighlightLightGray border border-[#E0E0E0]">
       <tr>
         {["Description", "Quantity", "Unit Price ($)", "Amount ($)"].map(
           (col, i) => (
             <th
               key={i}
-              className={`text-${i === 0 ? "left" : "right"} text-md font-semibold text-blackDark py-1.5 px-2`}
+              className={`text-${i === 0 ? "left" : "right"} text-sm font-semibold text-blackDark py-1.5 px-2`}
             >
               {col}
             </th>
@@ -58,7 +61,7 @@ const InvoiceTable = () => (
 );
 
 const TotalSummaryTable = () => (
-  <div className="mt-2.5 rounded border border-[#E0E0E0] overflow-hidden">
+  <div className="mt-2.5 border border-[#E0E0E0] overflow-hidden">
     <table className="w-full border-collapse">
       <tbody>
         {[
@@ -66,10 +69,10 @@ const TotalSummaryTable = () => (
           { label: "TOTAL DUE (GBP)", value: "600.00" },
         ].map((row, i) => (
           <tr key={i} className={`${i > 0 ? "border-t border-[#E0E0E0]" : ""}`}>
-            <td className="text-left text-md font-semibold text-blackDark py-1.5 px-2">
+            <td className="text-left text-sm font-semibold text-blackDark py-1.5 px-2">
               {row.label}
             </td>
-            <td className="text-right text-md font-semibold text-blackDark py-1.5 px-2 border-l border-[#E0E0E0]">
+            <td className="text-right text-sm font-semibold text-blackDark py-1.5 px-2 border-l border-[#E0E0E0]">
               {row.value}
             </td>
           </tr>
@@ -79,57 +82,55 @@ const TotalSummaryTable = () => (
   </div>
 );
 
-const FeedbackInputSection = () => (
-  <div className="flex flex-col gap-3 rounded-lg bg-[#F5F5F5] m-4 p-4">
-    <textarea
-      placeholder="Add your feedback notes or comments here..."
-      className="w-full resize-y bg-transparent border-0 focus:outline-none focus:ring-0 text-base leading-6 placeholder-gray-500"
-    />
-
-    <div className="flex items-center justify-between">
-      <div className="flex items-center gap-2">
-        <Button variant={"outline"} className="p-2" size={"empty"}>
-          <ReactUploadIcon />
-        </Button>
-        <Button variant={"outline"} className="p-2" size={"empty"}>
-          <ReactEmojiIcon />
-        </Button>
-      </div>
-
-      <div className="flex items-center gap-1">
-        <Button className="!p-2" size={"empty"}>
-          Discard
-        </Button>
-        <Button className="!p-2" size={"empty"}>
-          Submit
-        </Button>
-      </div>
-    </div>
-  </div>
-);
-
 export const PdfDetailView = observer(function PdfDetailView({
-  type,
-}: {
-  type: string;
-}) {
+  type = "chat",
+  ...rest
+}: Props) {
+  debugger
+  const sampleJson = [
+    {
+      label: "Vendor",
+      value: "Ellington Wood Decor",
+    },
+    {
+      label: "address",
+      value: "36 Terrick Rd, Ellington PE18 2NT, United Kingdom",
+    },
+    {
+      label: "Invoice No.",
+      value: "042022",
+    },
+    {
+      label: "Issue Date",
+      value: "30/04/2022",
+    },
+    {
+      label: "Due Date",
+      value: "30/04/2022",
+    },
+    {
+      label: "Reference",
+      value: "042022",
+    },
+  ];
+
   return (
     <div>
       {type === "table" && (
         <div className="h-[40rem] flex flex-col">
           {/* Top section */}
-            <PageTitle className="text-2xl py-2" title="Labels" />
-            <div className="flex flex-col mt-5 gap-2.5">
-              {[...Array(6)].map((_, i) => (
-                <LabelRow key={i} label="Vendor" value="Ellington Wood Decor" />
-              ))}
-            </div>
+          <PageTitle className="text-2xl py-2" title="Labels" />
+          <div className="flex flex-col mt-5 gap-2.5">
+            {[...sampleJson].map((_, i) => (
+              <LabelRow key={i} label={_?.label} value={_?.value} />
+            ))}
+          </div>
 
           {/* Bottom section */}
           <section className="basis-1/2 shrink-0">
             <PageTitle className="text-2xl py-6" title="Tables" />
             <InvoiceTable />
-            <div className="mt-2.5 text-sm">Table 2</div>
+            <div className="mt-2.5 text-md">Table 2</div>
             <TotalSummaryTable />
           </section>
         </div>
@@ -142,10 +143,11 @@ export const PdfDetailView = observer(function PdfDetailView({
             className="text-2xl py-3 pl-6 border-b border-[#E0E0E0]"
             title="Inactive Client Code"
           />
-          <div className="h-[64vh] overflow-y-auto bg-white">
+          <div className="h-[60vh] overflow-y-auto bg-white">
             <ActivityListSingleFile />
           </div>
-          <FeedbackInputSection />
+          <Separator />
+          <ChatInput {...{ ...rest, type }} />
         </div>
       )}
     </div>

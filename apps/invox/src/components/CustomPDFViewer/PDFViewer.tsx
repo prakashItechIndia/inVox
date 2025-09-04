@@ -19,9 +19,13 @@ import { toolbarPlugin, ToolbarSlot } from "@react-pdf-viewer/toolbar";
 import React, { useEffect, useRef, useState } from "react";
 
 // Icons (lucide-react)
+import {
+  ReactPresentationIcon,
+  ReactRotateIcon,
+} from "@shared/components/icons/invoice";
 import { Button } from "@shared/components/ui/button";
 import { Separator } from "@shared/components/ui/separator";
-import { Menu, RotateCcw, RotateCw } from "lucide-react";
+import { Menu, Minus, Plus } from "lucide-react";
 import PageTitle from "../page-title";
 
 interface PdfProps {
@@ -52,11 +56,7 @@ const PDFViewer: React.FC<PdfProps> = ({
   const renderToolBar = (props: ToolbarSlot) => {
     const {
       CurrentPageInput,
-      // Download,
-      // GoToNextPage,
-      // GoToPreviousPage,
       NumberOfPages,
-      // Print,
       Zoom,
       ZoomIn,
       ZoomOut,
@@ -66,21 +66,13 @@ const PDFViewer: React.FC<PdfProps> = ({
       <div className="flex w-full items-center gap-2 px-4 text-white">
         {/* Left: menu */}
         <div className="w-1/5 flex items-center">
-          <Button
-            type="button"
-            onClick={() => setSidePanelOpen((o) => !o)}
-            className="inline-flex items-center rounded-xl p-2 hover:bg-black/10 focus:outline-none text-white"
-            aria-label="Toggle thumbnails"
-            title="Toggle thumbnails"
-            variant={"ghost"}
-          >
-            <Menu className="h-5 w-5" />
-          </Button>
+          <div className="pr-2" onClick={() => setSidePanelOpen((o) => !o)}>
+            <Menu className="h-5 w-5 cursor-pointer" />
+          </div>
 
           <PageTitle title="example.pdf" />
         </div>
 
-        {/* Middle: zoom + rotate + nav + page info */}
         <div className="w-3/5 flex items-center justify-center">
           <div className="ml-2 flex items-center gap-1 text-sm">
             <CurrentPageInput />
@@ -99,7 +91,7 @@ const PDFViewer: React.FC<PdfProps> = ({
                   className="text-white"
                   title="Zoom Out"
                 >
-                  -
+                  <Minus />
                 </button>
               )}
             </ZoomOut>
@@ -111,7 +103,7 @@ const PDFViewer: React.FC<PdfProps> = ({
                   className="text-white"
                   title="Zoom Out"
                 >
-                  +
+                  <Plus />
                 </button>
               )}
             </ZoomIn>
@@ -119,24 +111,7 @@ const PDFViewer: React.FC<PdfProps> = ({
               orientation="vertical"
               className="border-dividerColor !h-8 mx-4"
             />
-
-            <RotatePage>
-              {(rp) => (
-                <Button
-                  type="button"
-                  variant={"ghost"}
-                  onClick={() =>
-                    rp.onRotatePage(currentPage, RotateDirection.Backward)
-                  }
-                  className="inline-flex items-center rounded-xl p-2 hover:bg-black/10 focus:outline-none"
-                  aria-label="Rotate left"
-                  title="Rotate left"
-                >
-                  <RotateCcw className="h-5 w-5" />
-                </Button>
-              )}
-            </RotatePage>
-
+            <ReactPresentationIcon />
             <RotatePage>
               {(rp) => (
                 <Button
@@ -149,7 +124,7 @@ const PDFViewer: React.FC<PdfProps> = ({
                   aria-label="Rotate right"
                   title="Rotate right"
                 >
-                  <RotateCw className="h-5 w-5" />
+                  <ReactRotateIcon />
                 </Button>
               )}
             </RotatePage>
@@ -193,14 +168,14 @@ const PDFViewer: React.FC<PdfProps> = ({
   }, [jumpIndex, jumpToPage]);
 
   return (
-    <div className="rpv-core__viewer flex flex-col rounded-2xl shadow-sm h-[calc(100vh-140px)]">
+    <div className="rpv-core__viewer flex flex-col h-[calc(100vh-160px)] overflow-hidden w-full">
       {/* Toolbar */}
       <div className="flex items-center rounded-t-2xl bg-[#323639] p-1 text-white">
         <Toolbar>{(props: ToolbarSlot) => renderToolBar(props)}</Toolbar>
       </div>
 
       {/* Body */}
-      <div className="rpv-core__viewer flex h-full border border-black/30">
+      <div className="rpv-core__viewer flex border border-black/30 h-[calc(100vh-220px)] rounded-b-2xl">
         {/* Thumbnails panel */}
         <div
           className={`border-r border-black/30 overflow-auto ${sidePanelOpen ? "w-1/5" : "hidden"} md:${sidePanelOpen ? "block" : "hidden"}`}
@@ -209,7 +184,7 @@ const PDFViewer: React.FC<PdfProps> = ({
         </div>
 
         {/* Main viewer */}
-        <div className="flex-1 overflow-hidden bg-[#525659] px-4">
+        <div className="flex-1 overflow-hidden rounded-2xl">
           <Worker
             workerUrl={`https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js`}
           >

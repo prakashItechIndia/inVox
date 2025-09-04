@@ -272,8 +272,8 @@ export const AddUsers = (props: Props) => {
         {/* Footer */}
         <DialogFooter className="flex items-center justify-end p-4 pt-0">
           <Button
-            className={cn(styles.CancelButton)}
             type="button"
+            variant={'outline'}
             onClick={onClose}
           >
             {t('USERS.ADD_USER.CANCEL')}

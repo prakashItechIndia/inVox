@@ -8,3 +8,9 @@
 .word-break {
   word-break: break-word;
 }
+
+.rpv-core__minimal-button,.rpv-core__textbox{
+    background-color: #191B1C !important;
+    color: #fff !important;
+    border-radius: unset !important;
+}
