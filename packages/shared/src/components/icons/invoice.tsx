@@ -13,7 +13,7 @@ import ReactPresentationIcons from "../../assets/icons/presentation.svg?react";
 import ReactClarifyChatIcons from "../../assets/icons/cil_chat.svg?react";
 import ReactChatShareIcons from "../../assets/icons/Container (2).svg?react";
 import ReactSkipIcons from "../../assets/icons/dotted_loading.svg?react";
-
+import ReactCutIcons from "../../assets/icons/ion_cut.svg?react";
 import { CustomSVGIconType } from "../../type";
 
 export const ReactInvoiceDueIcon: CustomSVGIconType = ({ className }) => {
@@ -119,4 +119,8 @@ export const ReactChatShareIcon: CustomSVGIconType = ({
 
 export const ReactSkipIcon: CustomSVGIconType = ({ className = "w-6 h-6" }) => {
   return <ReactSkipIcons className={className} />;
+};
+
+export const ReactCutIcon: CustomSVGIconType = ({ className = "w-20 h-20" }) => {
+  return <ReactCutIcons className={className} style={{ width: '1.4rem', height: '1.4rem' }} />;
 };

@@ -3,7 +3,7 @@ import { ChatInput } from "@/components/chatInput";
 import { Separator } from "@shared/components/ui/separator";
 import { observer } from "mobx-react-lite";
 import ActivityListSingleFile from "./chatCardView";
-
+import { InvoiceCutView } from "./cutView";
 interface Props {
   type: "chat" | "table" | "cut";
   submitText?: string;
@@ -86,7 +86,7 @@ export const PdfDetailView = observer(function PdfDetailView({
   type = "chat",
   ...rest
 }: Props) {
-  debugger;
+
   const sampleJson = [
     {
       label: "Vendor",
@@ -151,7 +151,7 @@ export const PdfDetailView = observer(function PdfDetailView({
         </div>
       )}
 
-      {type === "cut" && "...loading"}
+      {type === "cut" && <InvoiceCutView />}
     </div>
   );
 });

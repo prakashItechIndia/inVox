@@ -93,7 +93,7 @@ export const Clarifier = observer(function Clarifier() {
           isLoading={isLoading}
           tableClassName={cn("rounded-t-none")}
           selectedRow={() => {
-            navigate(`${NavigationRoutes.Indexing}`);
+            navigate(`${NavigationRoutes.Indexing}`, { state: { type: "chat" } });
           }}
         />
         <PaginationWrapper

@@ -20,6 +20,7 @@ type Props = SelectPrimitive.SelectProps & {
   optionsClassName?: string;
   isLoading?: boolean;
   isClearable?: boolean;
+  placeholderClassName?: string;
 };
 export function CustomSelect(props: Props) {
   const {
@@ -33,6 +34,7 @@ export function CustomSelect(props: Props) {
     optionsClassName = '',
     isLoading = false,
     isClearable = false,
+    placeholderClassName = '',
   } = props;
   const [value, setValue] = React.useState('');
   const [search, setSearch] = React.useState('');
@@ -63,7 +65,7 @@ export function CustomSelect(props: Props) {
       value={value}>
       <div className="relative">
         <SelectTrigger className={cn('p-2 text-md', className)}>
-          <SelectValue placeholder={placeHolder} />
+          <SelectValue placeholder={placeHolder} className={placeholderClassName}/>
         </SelectTrigger>
         {isClearable && value ? (
           <CircleX

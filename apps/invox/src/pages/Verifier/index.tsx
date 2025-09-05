@@ -120,7 +120,7 @@ export const Verifier = observer(function Verifier(props: Props) {
           isLoading={isLoading}
           tableClassName={cn("rounded-t-none")}
           selectedRow={() => {
-            navigate(`${NavigationRoutes.Indexing}`);
+            navigate(`${NavigationRoutes.Indexing}`,{ state: { type: "table" } });
           }}
         />
         <PaginationWrapper

@@ -55,7 +55,7 @@ export default function PaginationWrapper({
   return (
     <div className="flex items-center justify-between bg-[#FAFAFA] h-16 px-4 !rounded-b-2xl">
       {/* Left: Range */}
-      <div className="text-sm text-md">
+      <div className="text-md">
         {start}-{end} of {totalItems} items
       </div>
 
@@ -102,7 +102,7 @@ export default function PaginationWrapper({
                 }}
                 className={
                   cn(
-                    'w-10 h-10 mx-2',
+                    'w-10 h-10 mx-2 text-md',
                     {
                       'font-bold text-center': page === currentPage,
                       'bg-white font-normal': page !== currentPage,
@@ -150,13 +150,14 @@ export default function PaginationWrapper({
         <CustomSelect
           onValueChange={e => onPageSizeChange(Number(e))}
           value={`${itemsPerPage}`}
-          className="text-md w-18 rounded border px-2"
+          className="text-lg w-18 rounded border-none px-2 bg-[#FAFAFA]"
+          optionsClassName='text-md'
           options={pageSizeOptions.map(size => ({
             value: String(size),
             label: String(size),
           }))}
         />
-        <div className='text-md'>Items per page</div>
+        <div className='text-lg'>Items per page</div>
       </div>
     </div>
   );

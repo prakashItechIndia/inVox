@@ -2,6 +2,7 @@ import { MyProfileImage, PageTitle } from "@/components";
 import iTecghlogo from "@shared/assets/icons/Group 6.png";
 import BannerImage from "@shared/assets/icons/login.jpg";
 import { ReactLoginIcon } from "@shared/components/icons/register";
+import { Button } from "@shared/components/ui/button";
 import { useLanguageTranslation } from "@shared/hooks/ui/useLanguageTranslation";
 import React from "react";
 import { cn } from "shared";
@@ -15,6 +16,7 @@ interface WrapperProps {
   bannerDescription: string;
   hiddenReset?: boolean;
   loginFormclassName?: string;
+  handleReset?: () => void;
 }
 
 export const Wrapper: React.FC<WrapperProps> = ({
@@ -26,6 +28,7 @@ export const Wrapper: React.FC<WrapperProps> = ({
   bannerDescription,
   hiddenReset = false,
   loginFormclassName = "",
+  handleReset,
 }) => {
   const { t } = useLanguageTranslation();
 
@@ -33,7 +36,7 @@ export const Wrapper: React.FC<WrapperProps> = ({
     <div className="p-12 pr-0 relative bg-[#e6e6e6] h-full overflow-auto">
       <div className="grid grid-cols-1 lg:grid-cols-12 w-full h-full">
         {/* Banner Section */}
-        <div className="hidden lg:flex col-span-1 lg:col-span-8 relative flex-col justify-end shadow-lg rounded-[3rem] overflow-hidden !z-[1000] lg:mb-0 border-[6px] border-white">
+        <div className="hidden lg:flex col-span-1 lg:col-span-8 relative flex-col justify-end rounded-[3rem] overflow-hidden !z-[1000] lg:mb-0 border-[6px] border-white">
           <MyProfileImage
             className="absolute inset-0 w-full h-full object-cover !rounded-none filter brightness-75 !z-[1000]  "
             imageUrl={BannerImage}
@@ -41,11 +44,11 @@ export const Wrapper: React.FC<WrapperProps> = ({
             avatarClassName="!rounded-none filter  !z-[1000]"
             fileId={"id"}
           />
-          <div className="absolute inset-0 bg-black opacity-40 z-10" />
-          <div className="relative z-20 p-8 lg:p-[3rem] lg:pb-[4rem] text-center">
+          <div className="absolute inset-0 bg-black opacity-40 z-[1000]" />
+          <div className="relative z-[2000] p-8 lg:p-[3rem] lg:pb-[4rem] text-center">
             <div className="m-auto w-[40vw]">
               <PageTitle
-                className="text-2xl lg:text-[2.5rem] font-bold text-white mb-4 drop-shadow-2xl leading-tight"
+                className="text-2xl lg:text-[2.5rem] font-bold text-white mb-4 leading-tight"
                 title={title}
               />
               <p className="text-white text-base opacity-90 drop-shadow-lg">
@@ -66,7 +69,7 @@ export const Wrapper: React.FC<WrapperProps> = ({
               </span>
             </div>
             <PageTitle
-              className="text-2xl font-bold mb-2"
+              className="text-3xl font-bold mb-2"
               title={bannerTitle}
             />
             <p className="text-gray-500 mb-8">{bannerDescription}</p>
@@ -87,14 +90,18 @@ export const Wrapper: React.FC<WrapperProps> = ({
               <div className="mt-8">
                 <span className="text-md text-gray-500">
                   {t("LOGIN.FORGOT_PASSWORD_QUESTION")}{" "}
-                  <a href="#" className="font-medium text-gray-700 underline">
+                  <Button
+                    variant={"link"}
+                    className="font-medium text-gray-700 underline text-md p-0"
+                    onClick={handleReset}
+                  >
                     {t("LOGIN.SEND_RESET_LINK")}
-                  </a>
+                  </Button>
                 </span>
               </div>
             )}
           </div>
-          <div className="absolute bottom-0 right-0 left-[60vw] flex justify-end bg-gradient-to-r from-white to-[#F5F5F5]">
+          <div className="absolute bottom-0 right-0 left-[44vw] flex justify-end bg-gradient-to-r from-[#f4f4f440] to-[#F5F5F5]">
             <div className="!w-[33vw] p-[6rem] pb-[3rem] pt-[2rem] flex items-center justify-between w-full">
               <div className="text-md text-gray-400">
                 <div className="mb-2">

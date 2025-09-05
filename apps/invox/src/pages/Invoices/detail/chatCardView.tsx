@@ -1,3 +1,4 @@
+import { MyProfileImage, PageTitle } from "@/components";
 import ParrotAvatar from "@shared/assets/icons/parrot.png";
 import ThreeDots from "@shared/assets/icons/threedot.svg";
 
@@ -7,27 +8,34 @@ function ActivityCard({
   meta,
   body,
   showAction = true,
+  showAvatar = true,
 }: {
   avatar?: string;
   title?: string;
   meta?: any;
   body?: string;
   showAction?: boolean;
+  showAvatar?: boolean;
 }) {
   return (
     <div className="p-3 box-border bg-[#FAFAFA] rounded shadow-md">
       <div className="flex items-center gap-3">
-        <img
-          src={avatar}
-          alt="Avatar"
-          className="w-8 h-8 rounded-full object-cover"
-        />
+        {showAvatar && (
+          <MyProfileImage
+            imageUrl={avatar}
+            loaded={true}
+            avatarClassName="!rounded-full"
+            fileId={"chat_id"}
+            className="w-10 h-10 rounded-full object-cover"
+          />
+        )}
 
         <div className="flex-1 min-w-0">
           {title && (
-            <div className="text-blackDark font-semibold text-base leading-6">
-              {title}
-            </div>
+            <PageTitle
+              className="text-blackDark font-semibold text-base leading-6"
+              title={title}
+            />
           )}
           {meta && (
             <div className="text-greyForeground text-sm leading-5">{meta}</div>
@@ -68,7 +76,11 @@ export default function ActivityListSingleFile() {
         />
       ))}
 
-      <ActivityCard body="Moved to Pending list" showAction={false} />
+      <ActivityCard
+        title="Moved to Pending list"
+        showAction={false}
+        showAvatar={false}
+      />
     </div>
   );
 }

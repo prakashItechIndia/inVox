@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { Button } from '@shared/components/ui/button';
-import { SearchFilter } from '@shared/components/ui/searchFilter';
-import { useMemo } from 'react';
-import { cn } from 'shared';
-import { CustomSelect } from './custom-select';
+import { Button } from "@shared/components/ui/button";
+import { SearchFilter } from "@shared/components/ui/searchFilter";
+import { useMemo } from "react";
+import { cn } from "shared";
+import { CustomSelect } from "./custom-select";
 
 interface CompactPaginationToolbarProps {
   itemsPerPage: number;
@@ -24,10 +24,11 @@ export function CompactPaginationToolbar({
   onPageChange,
 }: CompactPaginationToolbarProps) {
   const pageSizeOptions = useMemo(
-    () => [10, 20, 50, 100].map(size => ({
-      value: String(size),
-      label: String(size),
-    })),
+    () =>
+      [10, 20, 50, 100].map((size) => ({
+        value: String(size),
+        label: String(size),
+      })),
     []
   );
 
@@ -39,7 +40,8 @@ export function CompactPaginationToolbar({
     if (currentPage < pageCount) onPageChange(currentPage + 1);
   };
 
-  const buttonBaseClasses = 'bg-white !border-1 !border-[#E0E0E0] rounded-lg p-2 text-[1.6rem]';
+  const buttonBaseClasses =
+    "bg-white !border-1 !border-[#E0E0E0] rounded-lg p-2 text-[1.6rem]";
 
   return (
     <div className="flex items-center justify-between px-4">
@@ -47,7 +49,7 @@ export function CompactPaginationToolbar({
       <div className="flex items-center w-full max-w-sm">
         <SearchFilter
           searchPlaceHolder="Search"
-          onChange={e => onSearchChange(e)}
+          onChange={(e) => onSearchChange(e)}
           className="w-full border-none"
         />
       </div>
@@ -69,7 +71,7 @@ export function CompactPaginationToolbar({
 
         {/* Items Per Page Selector */}
         <CustomSelect
-          onValueChange={e => onPageSizeChange(Number(e))}
+          onValueChange={(e) => onPageSizeChange(Number(e))}
           value={`${itemsPerPage}`}
           className="w-16 rounded-lg border px-2"
           options={pageSizeOptions}
@@ -99,7 +101,7 @@ function PaginationNavButton({
       onClick={onClick}
       disabled={disabled}
       className={cn(className, {
-        'opacity-50 cursor-not-allowed bg-[#F0F0F0]': disabled,
+        "opacity-50 cursor-not-allowed bg-[#F0F0F0]": disabled,
       })}
     >
       {label}

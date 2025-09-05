@@ -118,7 +118,7 @@ export const Indexing = observer(function Indexing(props: Props) {
           isLoading={isLoading}
           tableClassName={cn("rounded-t-none")}
           selectedRow={() => {
-            navigate(`${NavigationRoutes.Indexing}`);
+            navigate(`${NavigationRoutes.Indexing}`,{ state: { type: "cut" } });
           }}
         />
         <PaginationWrapper

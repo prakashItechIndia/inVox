@@ -8,8 +8,7 @@ import {
 import { useLanguageTranslation } from "@shared/hooks/ui/useLanguageTranslation";
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { CurrentUserRole } from "shared";
+import { useLocation, useNavigate } from "react-router-dom";
 import samplePdf from "../../../assets/invoice-sample.pdf";
 import { PdfDetailView } from "./chatAndTableView";
 import { ClarifyPoppover } from "./clarifyPoppover";
@@ -17,24 +16,10 @@ import { ClarifyPoppover } from "./clarifyPoppover";
 export const InvoiceDetail = observer(function InvoiceDetail() {
   const { t } = useLanguageTranslation();
   const navigate = useNavigate();
+  const location = useLocation();
   const [isClarify, setClarify] = useState(false);
   const [isReject, setReject] = useState(false);
   const [isSkip, setSkip] = useState(false);
-  const detailViewType = CurrentUserRole;
-
-  const typeFunction = () => {
-    if (detailViewType === "indexer") {
-      return "cut";
-    } else if (detailViewType === "verifier") {
-      return "table";
-    } else if (detailViewType === "clarifier") {
-      return "chat";
-    } else if (detailViewType === "organisationAdmin") {
-      return "table";
-    } else {
-      return "chat";
-    }
-  };
 
   const handleBack = () => {
     navigate(-1);
@@ -57,7 +42,7 @@ export const InvoiceDetail = observer(function InvoiceDetail() {
       <InvoiceHeader
         handleBack={handleBack}
         title="Billing Statement 1/26"
-        type={typeFunction()}
+        type={location?.state?.type ?? ""}
         onClickClarify={handleOpenAndClose}
         onClickReject={handleOpenAndCloseReject}
         onClickSkip={handleOpenAndCloseSkip}
@@ -68,7 +53,7 @@ export const InvoiceDetail = observer(function InvoiceDetail() {
         </div>
         <div className="col-span-5 h-full overflow-auto !pl-6">
           <PdfDetailView
-            type={typeFunction()}
+            type={location?.state?.type ?? ""}
             // type="chat"
             submitText={"Submit"}
             cancelText={"Move to Client"}

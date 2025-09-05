@@ -1,13 +1,13 @@
-import { NavigationRoutes } from '@/common/constant';
-import { PleaseWaitLoadText } from '@/components/please-wait-load-text';
-import { useLogin } from '@/hooks/rq/mutations/useLogin';
-import { cn } from '@/lib/utils';
-import { z_email, z_password_login } from '@/lib/zod.validator';
-import { styles } from '@/styles/style';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { ReactUserMenuIcon } from '@shared/components/icons/nav-bar';
-import { ReactPasswordIcon } from '@shared/components/icons/register';
-import { Button } from '@shared/components/ui/button';
+import { NavigationRoutes } from "@/common/constant";
+import { PleaseWaitLoadText } from "@/components/please-wait-load-text";
+import { useLogin } from "@/hooks/rq/mutations/useLogin";
+import { cn } from "@/lib/utils";
+import { z_email, z_password_login } from "@/lib/zod.validator";
+import { styles } from "@/styles/style";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { ReactUserMenuIcon } from "@shared/components/icons/nav-bar";
+import { ReactPasswordIcon } from "@shared/components/icons/register";
+import { Button } from "@shared/components/ui/button";
 import {
   Form,
   FormControl,
@@ -15,18 +15,18 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@shared/components/ui/form';
-import { Input } from '@shared/components/ui/input';
-import { PasswordInput } from '@shared/components/ui/password-input';
-import { useLanguageTranslation } from '@shared/hooks/ui/useLanguageTranslation';
-import { observer } from 'mobx-react-lite';
-import { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
-import { InvoxUserType } from 'shared';
-import { toast } from 'sonner';
-import { z } from 'zod';
-import { Wrapper } from './Wrapper';
+} from "@shared/components/ui/form";
+import { Input } from "@shared/components/ui/input";
+import { PasswordInput } from "@shared/components/ui/password-input";
+import { useLanguageTranslation } from "@shared/hooks/ui/useLanguageTranslation";
+import { observer } from "mobx-react-lite";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { InvoxUserType } from "shared";
+import { toast } from "sonner";
+import { z } from "zod";
+import { Wrapper } from "./Wrapper";
 
 const FormSchema = z.object({
   userName: z_email,
@@ -34,32 +34,32 @@ const FormSchema = z.object({
 });
 
 export const Login = observer(function () {
-  const {  isPending, error, isError } = useLogin();
+  const { isPending, error, isError } = useLogin();
   const navigate = useNavigate();
   const { t } = useLanguageTranslation();
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
-    mode: 'onTouched',
+    mode: "onTouched",
     defaultValues: {
-      userName: '',
-      password: '',
+      userName: "",
+      password: "",
     },
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    localStorage.setItem('users', 'loggedIn');
-    if (data?.userName?.includes('admin')) {
-      localStorage.setItem('currentRole', InvoxUserType.organisationAdmin);
-    } else if (data?.userName?.includes('clarifier')) {
-      localStorage.setItem('currentRole', InvoxUserType.clarifier);
-    } else if (data?.userName?.includes('indexer')) {
-      localStorage.setItem('currentRole', InvoxUserType.indexer);
-    } else if (data?.userName?.includes('verifier')) {
-      localStorage.setItem('currentRole', InvoxUserType.verifier);
+    localStorage.setItem("users", "loggedIn");
+    if (data?.userName?.includes("admin")) {
+      localStorage.setItem("currentRole", InvoxUserType.organisationAdmin);
+    } else if (data?.userName?.includes("clarifier")) {
+      localStorage.setItem("currentRole", InvoxUserType.clarifier);
+    } else if (data?.userName?.includes("indexer")) {
+      localStorage.setItem("currentRole", InvoxUserType.indexer);
+    } else if (data?.userName?.includes("verifier")) {
+      localStorage.setItem("currentRole", InvoxUserType.verifier);
     }
 
-    toast.success(t('LOGIN.TOAST.SUCCESS'));
+    toast.success(t("LOGIN.TOAST.SUCCESS"));
 
     setTimeout(() => {
       window.location.href = NavigationRoutes.Dashboard;
@@ -75,7 +75,7 @@ export const Login = observer(function () {
 
   useEffect(() => {
     if (isError && error) {
-      toast.error(t('COMMON.TOAST.ERROR_PREFIX') + ': ' + error?.message);
+      toast.error(t("COMMON.TOAST.ERROR_PREFIX") + ": " + error?.message);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [error, isError]);
@@ -86,24 +86,21 @@ export const Login = observer(function () {
 
   const submitButtonDisabled = isPending;
 
-
   return (
     <Wrapper
-      title={t('LOGIN.TITLE')}
-      subtitle={t('LOGIN.SUB_TITLE')}
-      bannerTitle={t('LOGIN.BANNER_TITLE')}
-      bannerDescription={t('LOGIN.BANNER_DESCRIPTION')}
+      title={t("LOGIN.TITLE")}
+      subtitle={t("LOGIN.SUB_TITLE")}
+      bannerTitle={t("LOGIN.BANNER_TITLE")}
+      bannerDescription={t("LOGIN.BANNER_DESCRIPTION")}
+      handleReset={handleForgotPassword}
       footerContent={
         <Button
-          className={cn(styles.submitButton, 'mb-4')}
+          className={cn(styles.submitButton, "mb-4")}
           type="submit"
           form="form"
           disabled={submitButtonDisabled}
         >
-          {!isPending
-            ? t('LOGIN.LOGIN')
-            : <PleaseWaitLoadText />
-          }
+          {!isPending ? t("LOGIN.LOGIN") : <PleaseWaitLoadText />}
         </Button>
       }
     >
@@ -118,15 +115,21 @@ export const Login = observer(function () {
             name="userName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel required>
-                  {t('LOGIN.USERNAME')}
-                </FormLabel>
+                <FormLabel required>{t("LOGIN.USERNAME")}</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder={t('LOGIN.USERNAME')}
+                    placeholder={t("LOGIN.USERNAME")}
                     type="email"
                     {...field}
-                    icon={<span className="absolute left-2 top-[12px] flex items-center justify-center"> <ReactUserMenuIcon className='w-4 h-4 mx-2' color="#616161" /></span>}
+                    icon={
+                      <span className="absolute left-2 top-[12px] flex items-center justify-center">
+                        {" "}
+                        <ReactUserMenuIcon
+                          className="w-4 h-4 mx-2"
+                          color="#616161"
+                        />
+                      </span>
+                    }
                   />
                 </FormControl>
                 <FormMessage />
@@ -139,16 +142,23 @@ export const Login = observer(function () {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel required>{t('LOGIN.PASSWORD')}</FormLabel>
+                <FormLabel required>{t("LOGIN.PASSWORD")}</FormLabel>
                 <FormControl>
-                  <PasswordInput icon={
-                    <span className="absolute left-1 top-[8px] flex items-center justify-center">
-                      <ReactPasswordIcon className='w-6 h-6 mx-2' /></span>} placeholder={t('LOGIN.PASSWORD')} {...field} />
+                  <PasswordInput
+                    icon={
+                      <span className="absolute left-1 top-[8px] flex items-center justify-center">
+                        <ReactPasswordIcon className="w-6 h-6 mx-2" />
+                      </span>
+                    }
+                    placeholder={t("LOGIN.PASSWORD")}
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
-                <div className="relative h-0 w-full">
+                {/* <div className="relative h-0 w-full">
                   <Button
-                    className="text-link absolute -bottom-8 -right-3 text-xs font-normal"
+                    // className="text-link absolute -bottom-8 -right-3 text-md font-normal"
+                    className='float-right text-link text-md pr-0'
                     type="button"
                     variant={'link'}
                     tabIndex={-1}
@@ -156,7 +166,7 @@ export const Login = observer(function () {
                   >
                     {t('LOGIN.FORGOT_PASSWORD')}?
                   </Button>
-                </div>
+                </div> */}
               </FormItem>
             )}
           />

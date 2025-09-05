@@ -54,9 +54,9 @@ export const ClarifyPoppover = (props: Props) => {
     mode: "onTouched",
     defaultValues: {
       firstName: "",
-      lastName: "", // Added lastName to defaultValues
-      email: "", // Added email to defaultValues
-      phoneNumber: "", // Added phoneNumber to defaultValues
+      lastName: "",
+      email: "",
+      phoneNumber: "",
     },
   });
   const onSubmit = async () => {
