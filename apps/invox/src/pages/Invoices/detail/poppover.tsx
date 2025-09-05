@@ -99,7 +99,7 @@ export const ClarifyPoppover = (props: Props) => {
                       <CustomSelect
                         onValueChange={field.onChange}
                         value={field.value}
-                        options={[{ label: "1", value: "1" }]}
+                        options={[{ label: "Query", value: "Query" }]}
                         isLoading={false}
                         placeHolder="Select"
                       />

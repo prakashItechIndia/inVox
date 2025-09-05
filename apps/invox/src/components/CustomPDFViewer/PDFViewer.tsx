@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
-// Import the styles for react-pdf-viewer
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 import "@react-pdf-viewer/thumbnail/lib/styles/index.css";
@@ -17,8 +15,6 @@ import { rotatePlugin } from "@react-pdf-viewer/rotate";
 import { thumbnailPlugin } from "@react-pdf-viewer/thumbnail";
 import { toolbarPlugin, ToolbarSlot } from "@react-pdf-viewer/toolbar";
 import React, { useEffect, useRef, useState } from "react";
-
-// Icons (lucide-react)
 import {
   ReactPresentationIcon,
   ReactRotateIcon,
@@ -54,13 +50,7 @@ const PDFViewer: React.FC<PdfProps> = ({
   const { Toolbar } = toolbarPluginInstance;
 
   const renderToolBar = (props: ToolbarSlot) => {
-    const {
-      CurrentPageInput,
-      NumberOfPages,
-      Zoom,
-      ZoomIn,
-      ZoomOut,
-    } = props;
+    const { CurrentPageInput, NumberOfPages, Zoom, ZoomIn, ZoomOut } = props;
 
     return (
       <div className="flex w-full items-center gap-2 px-4 text-white">

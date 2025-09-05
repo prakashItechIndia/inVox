@@ -1,5 +1,5 @@
-import { Checkbox } from '@shared/components/ui/checkbox';
-import { useLanguageTranslation } from '@shared/hooks/ui/useLanguageTranslation';
+import { Checkbox } from "@shared/components/ui/checkbox";
+import { useLanguageTranslation } from "@shared/hooks/ui/useLanguageTranslation";
 
 function usePasswordValidation(password: string) {
   return {
@@ -28,8 +28,8 @@ export const PasswordValidationCheckbox = ({
           disabled
         />
         <span className="text-xs">
-          {t('SET_PASSWORD.PASSWORD_VALIDATION.TITLE')}{' '}
-          {t('SET_PASSWORD.PASSWORD_VALIDATION.AT_LEAST_8_CHARACTERS')}
+          {t("SET_PASSWORD.PASSWORD_VALIDATION.TITLE")}{" "}
+          {t("SET_PASSWORD.PASSWORD_VALIDATION.AT_LEAST_8_CHARACTERS")}
         </span>
       </div>
       <div className="flex items-center gap-2">
@@ -39,8 +39,8 @@ export const PasswordValidationCheckbox = ({
           disabled
         />
         <span className="text-xs">
-          {t('SET_PASSWORD.PASSWORD_VALIDATION.TITLE')}{' '}
-          {t('SET_PASSWORD.PASSWORD_VALIDATION.AT_LEAST_1_LOWERCASE')}
+          {t("SET_PASSWORD.PASSWORD_VALIDATION.TITLE")}{" "}
+          {t("SET_PASSWORD.PASSWORD_VALIDATION.AT_LEAST_1_LOWERCASE")}
         </span>
       </div>
       <div className="flex items-center gap-2">
@@ -50,8 +50,8 @@ export const PasswordValidationCheckbox = ({
           disabled
         />
         <span className="text-xs">
-          {t('SET_PASSWORD.PASSWORD_VALIDATION.TITLE')}{' '}
-          {t('SET_PASSWORD.PASSWORD_VALIDATION.AT_LEAST_1_UPPERCASE')}
+          {t("SET_PASSWORD.PASSWORD_VALIDATION.TITLE")}{" "}
+          {t("SET_PASSWORD.PASSWORD_VALIDATION.AT_LEAST_1_UPPERCASE")}
         </span>
       </div>
       <div className="flex items-center gap-2">
@@ -61,8 +61,8 @@ export const PasswordValidationCheckbox = ({
           disabled
         />
         <span className="text-xs">
-          {t('SET_PASSWORD.PASSWORD_VALIDATION.TITLE')}{' '}
-          {t('SET_PASSWORD.PASSWORD_VALIDATION.AT_LEAST_1_NUMBER')}
+          {t("SET_PASSWORD.PASSWORD_VALIDATION.TITLE")}{" "}
+          {t("SET_PASSWORD.PASSWORD_VALIDATION.AT_LEAST_1_NUMBER")}
         </span>
       </div>
       <div className="flex items-center gap-2">
@@ -72,8 +72,8 @@ export const PasswordValidationCheckbox = ({
           disabled
         />
         <span className="text-xs">
-          {t('SET_PASSWORD.PASSWORD_VALIDATION.TITLE')}{' '}
-          {t('SET_PASSWORD.PASSWORD_VALIDATION.AT_LEAST_1_SPECIAL_CHARACTER')}
+          {t("SET_PASSWORD.PASSWORD_VALIDATION.TITLE")}{" "}
+          {t("SET_PASSWORD.PASSWORD_VALIDATION.AT_LEAST_1_SPECIAL_CHARACTER")}
         </span>
       </div>
     </div>

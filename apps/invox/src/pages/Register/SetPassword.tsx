@@ -1,10 +1,10 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
-import { NavigationRoutes } from '@/common/constant';
-import { useSetPassword } from '@/hooks/rq/mutations/useSetPassword';
-import { Button } from '@shared/components/ui/button';
+import { NavigationRoutes } from "@/common/constant";
+import { useSetPassword } from "@/hooks/rq/mutations/useSetPassword";
+import { Button } from "@shared/components/ui/button";
 import {
   Form,
   FormControl,
@@ -12,19 +12,19 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@shared/components/ui/form';
-import { PasswordInput } from '@shared/components/ui/password-input';
-import { observer } from 'mobx-react-lite';
-import { useEffect } from 'react';
-import { Navigate, useNavigate, useSearchParams } from 'react-router-dom';
-import { toast } from 'sonner';
+} from "@shared/components/ui/form";
+import { PasswordInput } from "@shared/components/ui/password-input";
+import { observer } from "mobx-react-lite";
+import { useEffect } from "react";
+import { Navigate, useNavigate, useSearchParams } from "react-router-dom";
+import { toast } from "sonner";
 
-import { PleaseWaitLoadText } from '@/components/please-wait-load-text';
-import { z_password, z_retype_password } from '@/lib/zod.validator';
-import { styles } from '@/styles/style';
-import { useLanguageTranslation } from '@shared/hooks/ui/useLanguageTranslation';
-import { PasswordValidationCheckbox } from './passwordValidationCheckbox';
-import { Wrapper } from './Wrapper';
+import { PleaseWaitLoadText } from "@/components/please-wait-load-text";
+import { z_password, z_retype_password } from "@/lib/zod.validator";
+import { styles } from "@/styles/style";
+import { useLanguageTranslation } from "@shared/hooks/ui/useLanguageTranslation";
+import { PasswordValidationCheckbox } from "./passwordValidationCheckbox";
+import { Wrapper } from "./Wrapper";
 
 const FormSchema = z
   .object({
@@ -32,25 +32,25 @@ const FormSchema = z
     confirmPassword: z_retype_password,
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: 'Passwords do not match.',
-    path: ['confirmPassword'],
+    message: "Passwords do not match.",
+    path: ["confirmPassword"],
   });
 
-export const SetPassword = observer(function() {
+export const SetPassword = observer(function () {
   const { mutate, isPending, error, isError } = useSetPassword();
   const navigate = useNavigate();
 
   const { t } = useLanguageTranslation();
   const [searchParams] = useSearchParams();
-  const token = searchParams.get('tk') || '';
-  const userId = searchParams.get('id') || '';
+  const token = searchParams.get("tk") || "";
+  const userId = searchParams.get("id") || "";
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
-    mode: 'onTouched',
+    mode: "onTouched",
     defaultValues: {
-      password: '',
-      confirmPassword: '',
+      password: "",
+      confirmPassword: "",
     },
   });
 
@@ -59,16 +59,16 @@ export const SetPassword = observer(function() {
       { ...data, token, userId },
       {
         onSuccess: () => {
-          toast.success(t('SET_PASSWORD.TOAST.SUCCESS'));
+          toast.success(t("SET_PASSWORD.TOAST.SUCCESS"));
           navigate(NavigationRoutes.SignIn);
         },
-      },
+      }
     );
   }
 
   useEffect(() => {
     if (isError && error) {
-      toast.error(t('COMMON.TOAST.ERROR_PREFIX') + ': ' + error?.message);
+      toast.error(t("COMMON.TOAST.ERROR_PREFIX") + ": " + error?.message);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [error, isError]);
@@ -78,7 +78,7 @@ export const SetPassword = observer(function() {
   }
 
   function handlePasswordBlur() {
-    form.trigger('confirmPassword');
+    form.trigger("confirmPassword");
   }
 
   const submitButtonDisabled = isPending;
@@ -88,43 +88,47 @@ export const SetPassword = observer(function() {
 
   return (
     <Wrapper
-      title={t('LOGIN.TITLE')}
-      subtitle={t('LOGIN.SUB_TITLE')}
-      bannerTitle={t('SET_PASSWORD.TITLE')}
-      bannerDescription={t('SET_PASSWORD.DESCRIPTION')}
+      title={t("LOGIN.TITLE")}
+      subtitle={t("LOGIN.SUB_TITLE")}
+      bannerTitle={t("SET_PASSWORD.TITLE")}
+      bannerDescription={t("SET_PASSWORD.DESCRIPTION")}
       hiddenReset={true}
-      loginFormclassName='!pt-2'
+      loginFormclassName="!pt-2"
       footerContent={
         <>
           <Button
             className={styles.submitButton}
             type="submit"
             form="form"
-            disabled={submitButtonDisabled}>
-            {!isPending ? t('SET_PASSWORD.SUBMIT') : <PleaseWaitLoadText />}
+            disabled={submitButtonDisabled}
+          >
+            {!isPending ? t("SET_PASSWORD.SUBMIT") : <PleaseWaitLoadText />}
           </Button>
           <Button
             variant="link"
-            className={'p-0'}
-            onClick={() => navigate(NavigationRoutes.SignIn)}>
-            {t('SET_PASSWORD.BACK_TO_LOGIN')}
+            className={"p-0"}
+            onClick={() => navigate(NavigationRoutes.SignIn)}
+          >
+            {t("SET_PASSWORD.BACK_TO_LOGIN")}
           </Button>
         </>
-      }>
+      }
+    >
       <Form {...form}>
         <form
           id="form"
           onSubmit={form.handleSubmit(onSubmit)}
-          className="w-full space-y-6">
+          className="w-full space-y-6"
+        >
           <FormField
             control={form.control}
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>{t('SET_PASSWORD.NEW_PASSWORD')}</FormLabel>
+                <FormLabel>{t("SET_PASSWORD.NEW_PASSWORD")}</FormLabel>
                 <FormControl>
                   <PasswordInput
-                    placeholder={t('SET_PASSWORD.NEW_PASSWORD')}
+                    placeholder={t("SET_PASSWORD.NEW_PASSWORD")}
                     autoFocus
                     {...field}
                     onBlur={() => {
@@ -143,16 +147,15 @@ export const SetPassword = observer(function() {
               </FormItem>
             )}
           />
-
           <FormField
             control={form.control}
             name="confirmPassword"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>{t('SET_PASSWORD.CONFIRM_PASSWORD')}</FormLabel>
+                <FormLabel>{t("SET_PASSWORD.CONFIRM_PASSWORD")}</FormLabel>
                 <FormControl>
                   <PasswordInput
-                    placeholder={t('SET_PASSWORD.CONFIRM_PASSWORD')}
+                    placeholder={t("SET_PASSWORD.CONFIRM_PASSWORD")}
                     {...field}
                   />
                 </FormControl>
@@ -162,7 +165,7 @@ export const SetPassword = observer(function() {
           />
         </form>
       </Form>
-      <PasswordValidationCheckbox password={form.watch('password')} />
+      <PasswordValidationCheckbox password={form.watch("password")} />
     </Wrapper>
   );
 });

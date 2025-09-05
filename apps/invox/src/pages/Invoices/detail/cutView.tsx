@@ -10,7 +10,7 @@ const PAGE_TYPES = [
   { label: "Misc", value: "misc" },
 ];
 
-const TOTAL_PAGES = 110;
+const TOTAL_PAGES = 68;
 
 type PageType = "invoice" | "misc";
 

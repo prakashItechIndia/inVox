@@ -95,7 +95,7 @@ export const Login = observer(function () {
       handleReset={handleForgotPassword}
       footerContent={
         <Button
-          className={cn(styles.submitButton, "mb-4")}
+          className={cn(styles.submitButton, "mb-4 text-md h-[42px]")}
           type="submit"
           form="form"
           disabled={submitButtonDisabled}
@@ -155,18 +155,6 @@ export const Login = observer(function () {
                   />
                 </FormControl>
                 <FormMessage />
-                {/* <div className="relative h-0 w-full">
-                  <Button
-                    // className="text-link absolute -bottom-8 -right-3 text-md font-normal"
-                    className='float-right text-link text-md pr-0'
-                    type="button"
-                    variant={'link'}
-                    tabIndex={-1}
-                    onClick={() => handleForgotPassword()}
-                  >
-                    {t('LOGIN.FORGOT_PASSWORD')}?
-                  </Button>
-                </div> */}
               </FormItem>
             )}
           />

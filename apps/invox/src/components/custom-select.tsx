@@ -1,13 +1,13 @@
-import * as React from 'react';
-import * as SelectPrimitive from '@radix-ui/react-select';
+import * as React from "react";
+import * as SelectPrimitive from "@radix-ui/react-select";
 import {
   Select,
   SelectContent,
   SelectTrigger,
   SelectValue,
-} from '@shared/components/ui/select';
-import { cn } from 'shared';
-import { CircleX } from 'lucide-react';
+} from "@shared/components/ui/select";
+import { cn } from "shared";
+import { CircleX } from "lucide-react";
 
 type Props = SelectPrimitive.SelectProps & {
   onValueChange: (value: string) => void;
@@ -29,15 +29,15 @@ export function CustomSelect(props: Props) {
     className,
     options = [],
     isSearchable = false,
-    placeHolder = 'Select',
+    placeHolder = "Select",
     disabled = false,
-    optionsClassName = '',
+    optionsClassName = "",
     isLoading = false,
     isClearable = false,
-    placeholderClassName = '',
+    placeholderClassName = "",
   } = props;
-  const [value, setValue] = React.useState('');
-  const [search, setSearch] = React.useState('');
+  const [value, setValue] = React.useState("");
+  const [search, setSearch] = React.useState("");
 
   React.useEffect(() => {
     if (selectValue && options.length) {
@@ -50,30 +50,34 @@ export function CustomSelect(props: Props) {
       autoComplete="off"
       onOpenChange={(open) => {
         if (open) {
-          setSearch('');
+          setSearch("");
         }
       }}
       onValueChange={(val) => {
         if (value === val) {
-          onValueChange && onValueChange('');
-          setValue('');
+          onValueChange && onValueChange("");
+          setValue("");
           return;
         }
         onValueChange && onValueChange(val);
         setValue(val);
       }}
-      value={value}>
+      value={value}
+    >
       <div className="relative">
-        <SelectTrigger className={cn('p-2 text-md', className)}>
-          <SelectValue placeholder={placeHolder} className={placeholderClassName}/>
+        <SelectTrigger className={cn("p-2 text-md", className)}>
+          <SelectValue
+            placeholder={placeHolder}
+            className={cn("!text-[#000]", placeholderClassName)}
+          />
         </SelectTrigger>
         {isClearable && value ? (
           <CircleX
             className="text-tableHeaderTextColor absolute right-7 top-3 h-5 w-5 cursor-pointer"
             onClick={(e) => {
               e.stopPropagation();
-              setValue('');
-              onValueChange?.('');
+              setValue("");
+              onValueChange?.("");
             }}
           />
         ) : null}

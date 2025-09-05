@@ -10,11 +10,8 @@ import {
   formatTimestampOrHoursLeft,
   GetInvoiceResponse,
   truncateString
-  // getParsedPhone,
-  // GetUserResponse
 } from "shared";
 
-// Replace it with the actual type of your data
 export const Columns = (): ColumnDef<GetInvoiceResponse>[] => [
   {
     accessorKey: "checkbox",

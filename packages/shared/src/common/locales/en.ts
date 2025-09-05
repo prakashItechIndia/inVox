@@ -129,7 +129,7 @@ const en = {
       "Sign in to access intelligent document processing, enhanced security, and seamless workflow automation.",
     BANNER_IMAGE_ALT: "Banner Image Alt Text",
     LOGO_ALT: "Logo Alt Text",
-    BRAND: "Invox",
+    BRAND: "iNvox",
     CONTINUE_AGREE: "By continuing, you agree to our",
     TERMS: "Terms of Service",
     AND: "and",

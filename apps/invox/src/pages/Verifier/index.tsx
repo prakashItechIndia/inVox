@@ -72,14 +72,7 @@ export const Verifier = observer(function Verifier(props: Props) {
           className={cn("bg-white")}
         />
       )}
-      <div
-        className={cn(
-          "flex items-center justify-between py-4 bg-[#FAFAFA] !h-16",
-          {
-            "!p-0 !m-0": isHiddenHeader,
-          }
-        )}
-      >
+      <div className={cn('flex items-center justify-between py-0 bg-[#FAFAFA]', { "!p-0 !m-0": isHiddenHeader })}>
         <Tabs
           orientation={"horizontal"}
           value={currentTab}

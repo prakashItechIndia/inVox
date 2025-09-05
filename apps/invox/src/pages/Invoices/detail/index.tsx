@@ -11,7 +11,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import samplePdf from "../../../assets/invoice-sample.pdf";
 import { PdfDetailView } from "./chatAndTableView";
-import { ClarifyPoppover } from "./clarifyPoppover";
+import { ClarifyPoppover } from "./poppover";
 
 export const InvoiceDetail = observer(function InvoiceDetail() {
   const { t } = useLanguageTranslation();
@@ -54,7 +54,6 @@ export const InvoiceDetail = observer(function InvoiceDetail() {
         <div className="col-span-5 h-full overflow-auto !pl-6">
           <PdfDetailView
             type={location?.state?.type ?? ""}
-            // type="chat"
             submitText={"Submit"}
             cancelText={"Move to Client"}
           />

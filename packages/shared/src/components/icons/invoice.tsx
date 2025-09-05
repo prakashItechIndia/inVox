@@ -20,19 +20,19 @@ export const ReactInvoiceDueIcon: CustomSVGIconType = ({ className }) => {
   return <DueSandClock className={className} />;
 };
 
-export const ReactPdfIcon: CustomSVGIconType = ({ className }) => {
+export const ReactPdfIcon: CustomSVGIconType = ({ className = 'h-6 w-6' }) => {
   return <PdfSvg className={className} />;
 };
 
-export const ReactLensPdfIcon: CustomSVGIconType = ({ className }) => {
+export const ReactLensPdfIcon: CustomSVGIconType = ({ className = 'h-4 w-4' }) => {
   return <LensSvg className={className} />;
 };
 
-export const ReactPendingIcon: CustomSVGIconType = ({ className }) => {
+export const ReactPendingIcon: CustomSVGIconType = ({ className = 'h-4 w-4' }) => {
   return <PendingSvg className={className} />;
 };
 
-export const ReactTickSvgIcon: CustomSVGIconType = ({ className }) => {
+export const ReactTickSvgIcon: CustomSVGIconType = ({ className = 'h-4 w-4' }) => {
   return <TickSvg className={className} />;
 };
 

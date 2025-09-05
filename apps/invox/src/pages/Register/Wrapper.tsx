@@ -33,7 +33,7 @@ export const Wrapper: React.FC<WrapperProps> = ({
   const { t } = useLanguageTranslation();
 
   return (
-    <div className="p-12 pr-0 relative bg-[#e6e6e6] h-full overflow-auto">
+    <div className="p-6 pr-0 relative bg-[#e6e6e6] h-full overflow-auto">
       <div className="grid grid-cols-1 lg:grid-cols-12 w-full h-full">
         {/* Banner Section */}
         <div className="hidden lg:flex col-span-1 lg:col-span-8 relative flex-col justify-end rounded-[3rem] overflow-hidden !z-[1000] lg:mb-0 border-[6px] border-white">
@@ -62,7 +62,7 @@ export const Wrapper: React.FC<WrapperProps> = ({
           <div
             className={cn("p-8 lg:p-[6rem] lg:pb-[0.5rem]", loginFormclassName)}
           >
-            <div className="flex items-center !mb-20">
+            <div className="flex items-center !mb-[6rem]">
               <ReactLoginIcon className="w-10 h-10 mr-4" />
               <span className="font-semibold text-xl text-[#3d3d4e]">
                 {t("LOGIN.BRAND")}
@@ -77,22 +77,22 @@ export const Wrapper: React.FC<WrapperProps> = ({
             <div className="mt-8">{footerContent}</div>
             <p className="text-[0.8rem] text-gray-400">
               {t("LOGIN.CONTINUE_AGREE")}{" "}
-              <a href="#" className="underline font-medium text-gray-700">
+              <a href="#" className="font-medium text-gray-700">
                 {t("LOGIN.TERMS")}
               </a>{" "}
               {t("LOGIN.AND")}{" "}
-              <a href="#" className="underline font-medium text-gray-700">
+              <a href="#" className="font-medium text-gray-700">
                 {t("LOGIN.PRIVACY")}
               </a>
               .
             </p>
             {!hiddenReset && (
-              <div className="mt-8">
+              <div className="mt-[2.6rem]">
                 <span className="text-md text-gray-500">
                   {t("LOGIN.FORGOT_PASSWORD_QUESTION")}{" "}
                   <Button
-                    variant={"link"}
-                    className="font-medium text-gray-700 underline text-md p-0"
+                    variant={"text"}
+                    className="font-medium text-gray-700 text-md p-0 !underline-none"
                     onClick={handleReset}
                   >
                     {t("LOGIN.SEND_RESET_LINK")}
@@ -102,7 +102,7 @@ export const Wrapper: React.FC<WrapperProps> = ({
             )}
           </div>
           <div className="absolute bottom-0 right-0 left-[44vw] flex justify-end bg-gradient-to-r from-[#f4f4f440] to-[#F5F5F5]">
-            <div className="!w-[33vw] p-[6rem] pb-[3rem] pt-[2rem] flex items-center justify-between w-full">
+            <div className="!w-[33vw] p-[6rem] pb-[3rem] pt-[2rem] flex items-center justify-between w-full !h-[18vh]">
               <div className="text-md text-gray-400">
                 <div className="mb-2">
                   {t("LOGIN.NEED_HELP")}{" "}
@@ -127,7 +127,7 @@ export const Wrapper: React.FC<WrapperProps> = ({
         </div>
       </div>
 
-      <div className="bg-white absolute right-0 top-0 bottom-[19vh] rounded-tl-[10vh] rounded-bl-[6vh] w-[60%] h-full" />
+      <div className="bg-white absolute right-0 top-0 bottom-[19vh] rounded-tl-[6vh] rounded-bl-[4vh] w-[60%] h-full" />
     </div>
   );
 };

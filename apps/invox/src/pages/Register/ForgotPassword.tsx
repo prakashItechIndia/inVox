@@ -24,6 +24,7 @@ import { PleaseWaitLoadText } from "@/components/please-wait-load-text";
 import { Wrapper } from "./Wrapper";
 import { styles } from "@/styles/style";
 import { useLanguageTranslation } from "@shared/hooks/ui/useLanguageTranslation";
+import { cn } from "@/lib/utils";
 
 const FormSchema = z.object({
   email: z_email,
@@ -70,7 +71,7 @@ export const ForgotPassword = observer(function () {
       footerContent={
         <>
           <Button
-            className={styles.submitButton}
+            className={cn(styles.submitButton, "text-md h-[42px]")}
             type="submit"
             form="form"
             disabled={submitButtonDisabled}
@@ -78,7 +79,7 @@ export const ForgotPassword = observer(function () {
             {!isPending ? t("FORGOT_PASSWORD.SUBMIT") : <PleaseWaitLoadText />}
           </Button>
           <Button
-            variant="link"
+            variant="text"
             className="text-link p-0 !my-1 text-sm font-normal"
             onClick={() => navigate(NavigationRoutes.SignIn)}
           >
